@@ -40,7 +40,7 @@
   //navigationHelpButton: true 
 //}); 
 
-      var viewer = new Cesium.Viewer("cesiumContainer", {
+var viewer = new Cesium.Viewer("cesiumContainer", {
           terrainProvider: Cesium.createWorldTerrain()
       });
 
@@ -65,7 +65,6 @@
           }
       });
 
-
       var polygon=viewer.entities.add({
           name:"東京都庁",
           description:"ここは東京都庁です。",
@@ -83,7 +82,7 @@
                 outlineColor : Cesium.Color.BLACK
           }
       });
-
+      
       viewer.camera.flyTo({
           destination: Cesium. Cartesian3. fromDegrees (139.7145,35.6779,3000.0)
       });
