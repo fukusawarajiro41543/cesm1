@@ -28,7 +28,17 @@
   <body>
     <div id="cesiumContainer"></div>
     <script>
-      const viewer = new Cesium.Viewer("cesiumContainer");
+      //const viewer = new Cesium.Viewer("cesiumContainer");
+      var viewer = new Cesium.Viewer(”cesiumContainer”, { 
+  baseLayerPicker: true, 
+  timeline : true, 
+  animation : true, 
+  homeButton: true, 
+  vrButton: fales, 
+  geocoder: true, 
+  sceneModePicker: true, 
+  navigationHelpButton: true 
+}); 
 
       var polygon = viewer.entities.add({
     name:"福井県庁",
@@ -53,7 +63,7 @@
         outlineColor : Cesium.Color.BLACK
     }
 });
-      //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/HelloWorld2.html
+      //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/HelloWorld3.html
     </script>
   </body>
 </html>
