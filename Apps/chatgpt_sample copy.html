@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>CesiumでglTFモデルを表示</title>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.87/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.87/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <style>
+        #cesiumContainer {
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="cesiumContainer"></div>
+    <script>
+        // Cesiumビューワーの初期化
+        const viewer = new Cesium.Viewer('cesiumContainer');
+
+        // 同じフォルダ内にあるglTFモデルの相対パス
+        const modelUrl = './3D_data/untitled.glb'; // glTFモデルのファイル名を指定
+
+        // 3Dモデルをエンティティとして追加
+        const modelEntity = viewer.entities.add({
+            name: '3D Model',
+            position: Cesium.Cartesian3.fromDegrees(139.6917, 35.6895, 0), // 緯度、経度、高度を指定
+            model: {
+                uri: modelUrl,
+                scale: 1.0 // モデルのスケールを調整
+            }
+        });
+
+        // カメラをモデルの位置に移動
+        viewer.camera.flyTo({
+          destination: Cesium. Cartesian3. fromDegrees (139.7145,35.6779,3000.0)
+      });
+
+        //viewer.zoomTo(modelEntity);
+        //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/chatgpt_sample.html
+
+    </script>
+</body>
+</html>
