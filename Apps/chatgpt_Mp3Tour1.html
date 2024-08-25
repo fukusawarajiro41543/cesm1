@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Cesiumでツアーと音声再生を組み合わせる</title>
+    <!-- CesiumのJavaScriptとCSSをCDNから読み込み -->
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.87/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.87/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <style>
+        #cesiumContainer {
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="cesiumContainer"></div>
+
+    <script>
+        // Cesium Ionトークンの設定
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE'; // ここにあなたのトークンを設定
+
+        // Cesium Viewerの初期化
+        const viewer = new Cesium.Viewer('cesiumContainer', {
+            terrainProvider: Cesium.createWorldTerrain()
+        });
+
+        // ツアーポイントの定義とMP3ファイルの設定
+        const tourPoints = [
+            {
+                destination: Cesium.Cartesian3.fromDegrees(-75.59777, 40.03883, 1000), // フィラデルフィア上空
+                duration: 5,  // 移動時間（秒）
+                pause: 3,     // 停止時間（秒）
+                audioSrc: './3D_data/audio1.mp3' // 最初のポイントで再生するMP3ファイル
+            },
+            {
+                destination: Cesium.Cartesian3.fromDegrees(-122.4194, 37.7749, 3000), // サンフランシスコ上空
+                duration: 5,
+                pause: 3,
+                audioSrc: './3D_data/audio2.mp3' // 二番目のポイントで再生するMP3ファイル
+            },
+            {
+                destination: Cesium.Cartesian3.fromDegrees(139.6917, 35.6895, 3000), // 東京上空
+                duration: 5,
+                pause: 3,
+                audioSrc: './3D_data/audio3.mp3' // 三番目のポイントで再生するMP3ファイル
+            }
+        ];
+
+        // 現在のツアーポイントのインデックス
+        let currentIndex = 0;
+
+        // 現在の音声オブジェクト
+        let currentAudio = null;
+
+        // ツアーを開始する関数
+        function startTour() {
+            if (currentIndex < tourPoints.length) {
+                const point = tourPoints[currentIndex];
+
+                // 前の音声を停止
+                if (currentAudio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0; // 音声の再生位置をリセット
+                }
+
+                // 新しい音声を設定して再生
+                currentAudio = new Audio(point.audioSrc);
+                currentAudio.play();
+
+                viewer.camera.flyTo({
+                    destination: point.destination,
+                    duration: point.duration,
+                    complete: function() {
+                        // 現在のポイントで停止した後、次のポイントへ移動
+                        setTimeout(function() {
+                            currentIndex++;
+                            startTour();
+                        }, point.pause * 1000);
+                    }
+                });
+            }
+        }
+
+        // ツアーを開始
+        startTour();
+
+        //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/chatgpt_Mp3Tour1.html
+    </script>
+</body>
+</html>
+
+
+
