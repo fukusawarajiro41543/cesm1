@@ -32,7 +32,7 @@
         const modelUrl = './3D_data/HyojunCCTV.glb'; // untitled.glb
                                                    // glTFモデルのファイル名を指定
         // モデルの位置（緯度、経度、高度）
-        const position = Cesium.Cartesian3.fromDegrees(130.450705, 33.585920, 100);
+        const position = Cesium.Cartesian3.fromDegrees(130.450705, 33.585920, 50);
 
         // モデルのヘディング、ピッチ、ロールを度で設定
         const headingDegrees = 90;  // 90度のヘディング
@@ -55,7 +55,7 @@
             orientation: orientation, // モデルのオリエンテーションを設定
             model: {
                 uri: modelUrl, // glTFモデルのURL
-                scale: 10  // モデルのスケールを調整
+                scale: 1.0  // モデルのスケールを調整
             }
         });
 
