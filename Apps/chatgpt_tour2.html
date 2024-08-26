@@ -125,7 +125,7 @@
                     }
                     return;
                 }
-                angle += 10; // 1度ずつ回転
+                angle += 1; // 1度ずつ回転
                 viewer.camera.rotate(Cesium.Cartesian3.UNIT_Z, Cesium.Math.toRadians(1));
             }, 30); // 30ミリ秒ごとに1度回転
         }
