@@ -1,0 +1,19 @@
+[
+  {
+    "id": "document",
+    "name": "Model 1 Example",
+    "version": "1.0"
+  },
+  {
+    "id": "model1",
+    "name": "3D Model 1",
+    "position": {
+      "cartographicDegrees": [130.455253, 33.579203, 0]
+    },
+    "model": {
+      "gltf": "./3D_data/syoumei10m.glb",
+      "scale": 200,
+      "minimumPixelSize": 128
+    }
+  }
+]

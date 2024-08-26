@@ -1,0 +1,19 @@
+[
+  {
+    "id": "document",
+    "name": "Model 3 Example",
+    "version": "1.0"
+  },
+  {
+    "id": "model3",
+    "name": "3D Model 3",
+    "position": {
+      "cartographicDegrees": [130.445822, 33.593040, 0]
+    },
+    "model": {
+      "gltf": "./3D_data/untitled.glb",
+      "scale": 200,
+      "minimumPixelSize": 128
+    }
+  }
+]

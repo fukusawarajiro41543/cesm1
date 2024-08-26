@@ -1,0 +1,27 @@
+[
+  {
+    "id": "document",
+    "name": "Line 2 Example",
+    "version": "1.0"
+  },
+  {
+    "id": "line2",
+    "name": "Line from Kyoto to Nagoya",
+    "polyline": {
+      "positions": {
+        "cartographicDegrees": [
+          135.7681, 35.0116, 0,  // 京都駅の緯度・経度・高度
+          136.9066, 35.1815, 0   // 名古屋駅の緯度・経度・高度
+        ]
+      },
+      "material": {
+        "solidColor": {
+          "color": {
+            "rgba": [0, 0, 255, 255]  // 青色のライン (RGBA)
+          }
+        }
+      },
+      "width": 5
+    }
+  }
+]
