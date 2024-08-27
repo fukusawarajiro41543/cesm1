@@ -29,25 +29,24 @@ Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOi
         });
 
         // CZMLファイルを読み込んで表示
-        Cesium.CzmlDataSource.load('./points.czml').then(function(dataSource) {
+        Cesium.CzmlDataSource.load('points.czml').then(function(dataSource) {
             viewer.dataSources.add(dataSource);
 
-            // すべてのポイントが見える位置にカメラを設定
-            viewer.zoomTo(dataSource, new Cesium.HeadingPitchRange(
-                Cesium.Math.toRadians(0),  // カメラのヘディング
-                Cesium.Math.toRadians(-45), // カメラのピッチ（角度）
-                2000000 // 距離（メートル）
-            ));
+            // データソースのエンティティに基づいてカメラのビュー範囲を設定
+            viewer.flyTo(dataSource, {
+                duration: 3, // カメラが移動する時間（秒）
+                offset: new Cesium.HeadingPitchRange(
+                    Cesium.Math.toRadians(0),  // カメラのヘディング（0度は北向き）
+                    Cesium.Math.toRadians(-30), // カメラのピッチ（-30度で少し下向き）
+                    2000000 // 距離（メートル）
+                )
+            });
         }).catch(function(error) {
             console.error('CZMLファイルの読み込み中にエラーが発生しました:', error);
         });
-
         //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/wwwpoint123456.html
-
     </script>
 </body>
 </html>
-
-
 
 
