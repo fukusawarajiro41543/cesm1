@@ -1,75 +1,46 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>Cesium CZML Multiple Files and 3D Models Example</title>
-    <script src="https://cesium.com/downloads/cesiumjs/releases/1.87/Build/Cesium/Cesium.js"></script>
-    <link href="https://cesium.com/downloads/cesiumjs/releases/1.87/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
-    <style>
-        #cesiumContainer {
-            width: 100%;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-        }
-        #controls {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 1;
-            background: white;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-    </style>
-</head>
-<body>
-    <div id="cesiumContainer"></div>
-    <div id="controls">
-        <button onclick="startTour()">スタート</button>
-        <button onclick="stopTour()">停止</button>
-    </div>
 
-    <script>
+
+
+
+        <!DOCTYPE html>
+        <html lang="ja">
+        <head>
+            <meta charset="UTF-8">
+            <title>Cesium CZML Multiple Points Example</title>
+            <script src="https://cesium.com/downloads/cesiumjs/releases/1.87/Build/Cesium/Cesium.js"></script>
+            <link href="https://cesium.com/downloads/cesiumjs/releases/1.87/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+            <style>
+                #cesiumContainer {
+                    width: 100%;
+                    height: 100vh;
+                    margin: 0;
+                    padding: 0;
+                }
+            </style>
+        </head>
+        <body>
+            <div id="cesiumContainer"></div>
+        
+            <script>
         // Cesium Ionトークンの設定
         Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE'; // ここにあなたのトークンを設定
-
-        // Cesium Viewerの初期化
-        const viewer = new Cesium.Viewer('cesiumContainer', {
-            terrainProvider: Cesium.createWorldTerrain(),
-            timeline: true,
-            animation: true
-        });
-
-        // 複数のCZMLファイルを読み込む関数
-        function loadCzmlFiles(filePaths) {
-            filePaths.forEach(function(filePath) {
-                Cesium.CzmlDataSource.load(filePath).then(function(dataSource) {
+        
+                // Cesium Viewerの初期化
+                const viewer = new Cesium.Viewer('cesiumContainer', {
+                    terrainProvider: Cesium.createWorldTerrain(),
+                    timeline: false,
+                    animation: false
+                });
+        
+                // CZMLファイルを読み込んで表示
+                Cesium.CzmlDataSource.load('points.czml').then(function(dataSource) {
                     viewer.dataSources.add(dataSource);
                     viewer.zoomTo(dataSource);
                 }).catch(function(error) {
-                    console.error(filePath + ' の読み込み中にエラーが発生しました:', error);
+                    console.error('CZMLファイルの読み込み中にエラーが発生しました:', error);
                 });
-            });
-        }
 
-        // 読み込むCZMLファイルのリスト
-        const czmlFiles = ['line1.czml'];
-                           //'line1.czml', 'line2.czml', 'tour.czml', 'model1.czml', 'model2.czml', 'model3.czml'
-        // CZMLファイルを読み込む
-        loadCzmlFiles(czmlFiles);
-
-        // ツアーのコントロール
-        function startTour() {
-            viewer.clock.shouldAnimate = true;  // アニメーションを開始
-        }
-
-        function stopTour() {
-            viewer.clock.shouldAnimate = false; // アニメーションを停止
-        }
-
-        //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/www123456.html
-    </script>
-</body>
-</html>
+             //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/www123456.html
+            </script>
+        </body>
+        </html>
