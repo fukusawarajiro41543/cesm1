@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Cesium Tokyo to Osaka Line Example</title>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.87/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.87/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <style>
+        #cesiumContainer {
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="cesiumContainer"></div>
+
+    <script>
+        // Cesium Ionトークンの設定
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE'; // ここにあなたのトークンを設定
+
+        // Cesium Viewerの初期化
+        const viewer = new Cesium.Viewer('cesiumContainer', {
+            terrainProvider: Cesium.createWorldTerrain(),
+            timeline: false,
+            animation: false
+        });
+
+        // 東京と大阪の座標
+        const tokyoCoordinates = [139.767052, 35.681167, 0]; // 緯度, 経度, 高度（東京駅）
+        const osakaCoordinates = [135.498302, 34.693738, 0]; // 緯度, 経度, 高度（大阪駅）
+
+        // ラインのエンティティを追加
+        const lineEntity = viewer.entities.add({
+            polyline: {
+                positions: Cesium.Cartesian3.fromDegreesArrayHeights([
+                    tokyoCoordinates[0], tokyoCoordinates[1], tokyoCoordinates[2], 
+                    osakaCoordinates[0], osakaCoordinates[1], osakaCoordinates[2]
+                ]),
+                width: 5,  // ラインの幅
+                material: Cesium.Color.RED // ラインの色
+            }
+        });
+
+        // ラインが見える位置にカメラを移動
+        viewer.zoomTo(viewer.entities);
+        //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/two pointsline.html
+    </script>
+</body>
+</html>
