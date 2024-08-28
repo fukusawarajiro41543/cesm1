@@ -29,7 +29,7 @@
         });
 
         // CZMLファイルを読み込んで表示
-        Cesium.CzmlDataSource.load('lines.czml').then(function(dataSource) {
+        Cesium.CzmlDataSource.load('./lines.czml').then(function(dataSource) {
             viewer.dataSources.add(dataSource);
 
             // ラインが見える位置にカメラを移動
