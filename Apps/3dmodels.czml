@@ -8,7 +8,7 @@
         "id": "model1",
         "name": "Model 1",
         "position": {
-            "cartographicDegrees": [139.767052, 35.681167, 100]
+            "cartographicDegrees": [130.445822, 33.593040, 100]
         },
         "model": {
             "gltf": "./3D_data/syoumei10m.glb",
@@ -20,7 +20,7 @@
         "id": "model2",
         "name": "Model 2",
         "position": {
-            "cartographicDegrees": [135.498302, 34.693738, 100]
+            "cartographicDegrees": [130.450673, 33.585923, 100]
         },
         "model": {
             "gltf": "./3D_data/HyojunCCTV.glb",
@@ -32,7 +32,7 @@
         "id": "model3",
         "name": "Model 3",
         "position": {
-            "cartographicDegrees": [130.418061, 33.590355, 100]
+            "cartographicDegrees": [130.455253, 33.579203, 100]
         },
         "model": {
             "gltf": "./3D_data/untitled.glb",
