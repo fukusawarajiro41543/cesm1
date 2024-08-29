@@ -25,6 +25,26 @@
         }
     },
     {
+        "id": "尾巡山(屋敷平)To屋敷平(尾巡山)",
+        "name": "尾巡山(屋敷平) to 屋敷平(尾巡山)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [
+                    130.52838888888891, 31.31808333333333, 18,
+                    130.37325000000001, 31.32191667,19
+                ]
+            },
+            "width": 5,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
         "id": "hiroshimaToHakataLine",
         "name": "Hiroshima to Hakata Line",
         "polyline": {
