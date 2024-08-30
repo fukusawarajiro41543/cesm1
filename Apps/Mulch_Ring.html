@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Cesium Ring Example</title>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.82/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.82/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <style>
+        #cesiumContainer {
+            width: 100%; 
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="cesiumContainer"></div>
+    <script>
+        // 上記のJavaScriptコードをここに追加します
+        // Cesium Ionトークンの設定
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE'; // ここにあなたのトークンを設定
+
+// Cesium Viewerの初期化
+var viewer = new Cesium.Viewer('cesiumContainer');
+
+// CZMLデータを読み込む
+var czmlDataSource = new Cesium.CzmlDataSource();
+czmlDataSource.load(czml).then(function() {
+    viewer.dataSources.add(czmlDataSource);
+    viewer.zoomTo(czmlDataSource);
+});
+
+// 上記CZMLデータをJavaScriptの変数として定義します
+var czml = [
+  {
+    "id": "document",
+    "name": "CZML Multiple Rings",
+    "version": "1.0"
+  },
+  {
+    "id": "ring1",
+    "name": "Ring 1",
+    "polyline": {
+      "positions": {
+        "cartographicDegrees": [
+          139.767125, 35.681236, 0,
+          139.767135, 35.681246, 0,
+          139.767145, 35.681256, 0,
+          139.767155, 35.681266, 0,
+          139.767125, 35.681236, 0
+        ]
+      },
+      "width": 5,
+      "material": {
+        "solidColor": {
+          "color": {
+            "rgba": [255, 0, 0, 255]
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "ring2",
+    "name": "Ring 2",
+    "polyline": {
+      "positions": {
+        "cartographicDegrees": [
+          139.770625, 35.680236, 0,
+          139.770635, 35.680246, 0,
+          139.770645, 35.680256, 0,
+          139.770655, 35.680266, 0,
+          139.770625, 35.680236, 0
+        ]
+      },
+      "width": 5,
+      "material": {
+        "solidColor": {
+          "color": {
+            "rgba": [0, 255, 0, 255]
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "ring3",
+    "name": "Ring 3",
+    "polyline": {
+      "positions": {
+        "cartographicDegrees": [
+          139.765625, 35.682236, 0,
+          139.765635, 35.682246, 0,
+          139.765645, 35.682256, 0,
+          139.765655, 35.682266, 0,
+          139.765625, 35.682236, 0
+        ]
+      },
+      "width": 5,
+      "material": {
+        "solidColor": {
+          "color": {
+            "rgba": [0, 0, 255, 255]
+          }
+        }
+      }
+    }
+  }
+];
+
+      //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/HelloWorld.html
+    </script>
+</body>
+</html>
