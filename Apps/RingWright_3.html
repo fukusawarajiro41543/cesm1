@@ -87,6 +87,12 @@ viewer.entities.add({
     }
 });
 
+    // ①建物モデルの追加
+    var your_3d_tiles =viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
+      url : 'https://plateau.geospatial.jp/main/data/3d-tiles/bldg/13100_tokyo/13104_shinjuku-ku/low_resolution/tileset.json'
+    }));
+
+
 // 東京駅に視点を移動
 viewer.zoomTo(viewer.entities);
 
