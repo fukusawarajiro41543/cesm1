@@ -1,0 +1,123 @@
+[
+    {
+        "id": "document",
+        "name": "Multiple Points with Labels",
+        "version": "1.0"
+    },
+    {
+        "id": "tokyo",
+        "name": "Tokyo",
+        "position": {
+            "cartographicDegrees": [139.767052, 35.681167, 50]
+        },
+        "point": {
+            "pixelSize": 10,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "Tokyo",
+            "font": "16pt sans-serif",
+            "fillColor": {
+                "rgba": [255, 255, 255, 255]
+            },
+            "outlineColor": {
+                "rgba": [0, 0, 0, 255]
+            },
+            "outlineWidth": 2,
+            "style": "FILL_AND_OUTLINE",
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -20]
+            }
+        }
+    },
+    {
+        "id": "osaka",
+        "name": "Osaka",
+        "position": {
+            "cartographicDegrees": [135.498302, 34.693738, 50]
+        },
+        "point": {
+            "pixelSize": 10,
+            "color": {
+                "rgba": [0, 255, 0, 255]
+            }
+        },
+        "label": {
+            "text": "Osaka",
+            "font": "16pt sans-serif",
+            "fillColor": {
+                "rgba": [255, 255, 255, 255]
+            },
+            "outlineColor": {
+                "rgba": [0, 0, 0, 255]
+            },
+            "outlineWidth": 2,
+            "style": "FILL_AND_OUTLINE",
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -20]
+            }
+        }
+    },
+    {
+        "id": "hiroshima",
+        "name": "Hiroshima",
+        "position": {
+            "cartographicDegrees": [132.459622, 34.396271, 50]
+        },
+        "point": {
+            "pixelSize": 10,
+            "color": {
+                "rgba": [0, 0, 255, 255]
+            }
+        },
+        "label": {
+            "text": "Hiroshima",
+            "font": "16pt sans-serif",
+            "fillColor": {
+                "rgba": [255, 255, 255, 255]
+            },
+            "outlineColor": {
+                "rgba": [0, 0, 0, 255]
+            },
+            "outlineWidth": 2,
+            "style": "FILL_AND_OUTLINE",
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -20]
+            }
+        }
+    },
+    {
+        "id": "hakata",
+        "name": "Hakata",
+        "position": {
+            "cartographicDegrees": [130.418061, 33.590355, 50]
+        },
+        "point": {
+            "pixelSize": 10,
+            "color": {
+                "rgba": [255, 255, 0, 255]
+            }
+        },
+        "label": {
+            "text": "Hakata",
+            "font": "16pt sans-serif",
+            "fillColor": {
+                "rgba": [255, 255, 255, 255]
+            },
+            "outlineColor": {
+                "rgba": [0, 0, 0, 255]
+            },
+            "outlineWidth": 2,
+            "style": "FILL_AND_OUTLINE",
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -20]
+            }
+        }
+    }
+]
