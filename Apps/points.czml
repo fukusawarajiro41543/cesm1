@@ -1,0 +1,105 @@
+[
+  {
+    "id": "document",
+    "version": "1.0"
+  },
+  {
+    "id": "point-1",
+    "name": "Fukuoka Point",
+    "position": {
+      "cartographicDegrees": [130.4207, 33.5893, 1000]  // 緯度, 経度, 高度（1000m）
+    },
+    "point": {
+      "pixelSize": 10,
+      "color": {
+        "rgba": [0, 255, 0, 255]  // 緑色
+      }
+    }
+  },
+  {
+    "id": "line-1",
+    "name": "Line to Ground from Fukuoka Point",
+    "polyline": {
+      "positions": {
+        "cartographicDegrees": [
+          130.4207, 33.5893, 1000,  // 上空の点
+          130.4207, 33.5893, 0      // 地上の点
+        ]
+      },
+      "width": 2,
+      "material": {
+        "solidColor": {
+          "color": {
+            "rgba": [0, 255, 0, 255]  // 線の色（緑色）
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "point-2",
+    "name": "Kurume Point",
+    "position": {
+      "cartographicDegrees": [130.5103, 33.3273, 1500]  // 緯度, 経度, 高度（1500m）
+    },
+    "point": {
+      "pixelSize": 10,
+      "color": {
+        "rgba": [0, 0, 255, 255]  // 青色
+      }
+    }
+  },
+  {
+    "id": "line-2",
+    "name": "Line to Ground from Kurume Point",
+    "polyline": {
+      "positions": {
+        "cartographicDegrees": [
+          130.5103, 33.3273, 1500,  // 上空の点
+          130.5103, 33.3273, 0      // 地上の点
+        ]
+      },
+      "width": 2,
+      "material": {
+        "solidColor": {
+          "color": {
+            "rgba": [0, 0, 255, 255]  // 線の色（青色）
+          }
+        }
+      }
+    }
+  },
+  {
+    "id": "point-3",
+    "name": "Sasebo Point",
+    "position": {
+      "cartographicDegrees": [129.7131, 33.2494, 1200]  // 緯度, 経度, 高度（1200m）
+    },
+    "point": {
+      "pixelSize": 10,
+      "color": {
+        "rgba": [255, 0, 0, 255]  // 赤色
+      }
+    }
+  },
+  {
+    "id": "line-3",
+    "name": "Line to Ground from Sasebo Point",
+    "polyline": {
+      "positions": {
+        "cartographicDegrees": [
+          129.7131, 33.2494, 1200,  // 上空の点
+          129.7131, 33.2494, 0      // 地上の点
+        ]
+      },
+      "width": 2,
+      "material": {
+        "solidColor": {
+          "color": {
+            "rgba": [255, 0, 0, 255]  // 線の色（赤色）
+          }
+        }
+      }
+    }
+  }
+]
