@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Cesium - 福岡空港上空に厚み1mの六角形ポリゴンを描画</title>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.93/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.93/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <style>
+        @import url(https://cesium.com/downloads/cesiumjs/releases/1.93/Build/Cesium/Widgets/widgets.css);
+        html, body, #cesiumContainer {
+            width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="cesiumContainer"></div>
+    <script>
+        // Cesium Ionトークンの設定
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE'; // ここにあなたのトークンを設定
+
+        // Cesiumのビューワを初期化
+        var viewer = new Cesium.Viewer('cesiumContainer');
+
+        // 福岡空港の緯度・経度（おおよそ）
+        var fukuokaAirportLat = 33.5859;
+        var fukuokaAirportLon = 130.4506;
+        var altitude = 50;  // 高度50メートル
+        var thickness = 1;  // 厚み1メートル
+
+        // 六角形の半径（メートル）
+        var radius = 200;
+
+        // 六角形の頂点を計算する関数
+        function computeHexagonPositions(center, radius) {
+            var positions = [];
+            for (var i = 0; i < 6; i++) {
+                var angle = Cesium.Math.toRadians(60 * i);
+                var x = center.longitude + (radius / 111319.9) * Math.cos(angle);
+                var y = center.latitude + (radius / 111319.9) * Math.sin(angle);
+                positions.push(Cesium.Cartesian3.fromDegrees(x, y, altitude));
+            }
+            // 最初の点を閉じるために追加
+            positions.push(positions[0]);
+            return positions;
+        }
+
+        // 六角形の中心座標
+        var center = {
+            latitude: fukuokaAirportLat,
+            longitude: fukuokaAirportLon
+        };
+
+        // 六角形の頂点座標を計算
+        var hexagonPositions = computeHexagonPositions(center, radius);
+
+        // 厚み1mの六角形のCorridorエンティティを追加
+        viewer.entities.add({
+            name: 'Thick Hexagon',
+            corridor: {
+                positions: hexagonPositions,
+                width: thickness,
+                material: Cesium.Color.RED.withAlpha(0.5),
+                height: altitude,
+                extrudedHeight: altitude + thickness  // 厚みを1メートルに設定
+            }
+        });
+
+        // カメラを福岡空港上空に移動
+        viewer.camera.setView({
+            destination: Cesium.Cartesian3.fromDegrees(fukuokaAirportLon, fukuokaAirportLat, 1000)
+        });
+
+        //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/3Dporygon.html
+    </script>
+</body>
+</html>
