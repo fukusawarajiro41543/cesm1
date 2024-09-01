@@ -29,10 +29,10 @@
         });
 
         // CesiumのサンプルglTFモデルのURL
-        const modelUrl = './3D_data/HyojunCCTV.glb'; // untitled.glb
+        const modelUrl = './3D_data/syoumei10m.glb'; // untitled.glb
                                                    // glTFモデルのファイル名を指定
         // モデルの位置（緯度、経度、高度）
-        const position = Cesium.Cartesian3.fromDegrees(130.450705, 33.585920, 50);
+        const position = Cesium.Cartesian3.fromDegrees(130.445822, 33.593040, 50);
 
         // モデルのヘディング、ピッチ、ロールを度で設定
         const headingDegrees = 90;  // 90度のヘディング
@@ -58,6 +58,69 @@
                 scale: 1.0  // モデルのスケールを調整
             }
         });
+
+            // CesiumのサンプルglTFモデルのURL
+            const modelUrl = './3D_data/HyojunCCTV.glb'; // untitled.glb
+                                                   // glTFモデルのファイル名を指定
+        // モデルの位置（緯度、経度、高度）
+        const position = Cesium.Cartesian3.fromDegrees(130.450673, 33.585923, 50);
+
+        // モデルのヘディング、ピッチ、ロールを度で設定
+        const headingDegrees = 90;  // 90度のヘディング
+        const pitchDegrees = 0;     // 0度のピッチ
+        const rollDegrees = 0;      // 0度のロール
+
+        // 度をラジアンに変換
+        const heading = Cesium.Math.toRadians(headingDegrees);
+        const pitch = Cesium.Math.toRadians(pitchDegrees);
+        const roll = Cesium.Math.toRadians(rollDegrees);
+
+        // HeadingPitchRollからQuaternionを生成
+        const hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
+        const orientation = Cesium.Transforms.headingPitchRollQuaternion(position, hpr);
+
+        // 3Dモデルをエンティティとして追加
+        const modelEntity = viewer.entities.add({
+            name: 'Cesium Balloon Model',
+            position: position,
+            orientation: orientation, // モデルのオリエンテーションを設定
+            model: {
+                uri: modelUrl, // glTFモデルのURL
+                scale: 1.0  // モデルのスケールを調整
+            }
+        });
+
+            // CesiumのサンプルglTFモデルのURL
+            const modelUrl = './3D_data/untitled.glb'; // untitled.glb
+                                                   // glTFモデルのファイル名を指定
+        // モデルの位置（緯度、経度、高度）
+        const position = Cesium.Cartesian3.fromDegrees(130.455253, 33.579203, 50);
+
+        // モデルのヘディング、ピッチ、ロールを度で設定
+        const headingDegrees = 90;  // 90度のヘディング
+        const pitchDegrees = 0;     // 0度のピッチ
+        const rollDegrees = 0;      // 0度のロール
+
+        // 度をラジアンに変換
+        const heading = Cesium.Math.toRadians(headingDegrees);
+        const pitch = Cesium.Math.toRadians(pitchDegrees);
+        const roll = Cesium.Math.toRadians(rollDegrees);
+
+        // HeadingPitchRollからQuaternionを生成
+        const hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
+        const orientation = Cesium.Transforms.headingPitchRollQuaternion(position, hpr);
+
+        // 3Dモデルをエンティティとして追加
+        const modelEntity = viewer.entities.add({
+            name: 'Cesium Balloon Model',
+            position: position,
+            orientation: orientation, // モデルのオリエンテーションを設定
+            model: {
+                uri: modelUrl, // glTFモデルのURL
+                scale: 1.0  // モデルのスケールを調整
+            }
+        });
+
 
         // カメラをモデルの位置に移動
         viewer.zoomTo(modelEntity);
