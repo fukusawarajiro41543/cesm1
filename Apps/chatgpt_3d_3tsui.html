@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Cesium 3D Models with Rotation</title>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.87/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.87/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <style>
+        #cesiumContainer {
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="cesiumContainer"></div>
+
+    <script>
+        // Cesium Ionトークンの設定
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE'; // ここにあなたのトークンを設定
+
+        // Cesium Viewerの初期化
+        const viewer = new Cesium.Viewer('cesiumContainer', {
+            terrainProvider: Cesium.createWorldTerrain() // 世界の地形データを提供
+        });
+
+        // 1つ目の3Dモデルの追加
+        const position1 = Cesium.Cartesian3.fromDegrees(130.445822, 33.593040, 0); // 東京駅付近
+        const heading1 = Cesium.Math.toRadians(0); // 角度（度→ラジアン変換）
+        const pitch1 = Cesium.Math.toRadians(0);
+        const roll1 = Cesium.Math.toRadians(0);
+        const orientation1 = Cesium.Transforms.headingPitchRollQuaternion(position1, new Cesium.HeadingPitchRoll(heading1, pitch1, roll1));
+
+        viewer.entities.add({
+            name: "Model 1",
+            position: position1,
+            orientation: orientation1,
+            model: {
+                uri: './3D_data/syoumei10m.glb',
+                scale: 10.0,
+                minimumPixelSize: 128
+            }
+        });
+
+        // 2つ目の3Dモデルの追加
+        const position2 = Cesium.Cartesian3.fromDegrees(130.450673, 33.585923, 0); // 近くの別の場所
+        const heading2 = Cesium.Math.toRadians(45); // 45度の回転
+        const pitch2 = Cesium.Math.toRadians(0);
+        const roll2 = Cesium.Math.toRadians(0);
+        const orientation2 = Cesium.Transforms.headingPitchRollQuaternion(position2, new Cesium.HeadingPitchRoll(heading2, pitch2, roll2));
+
+        viewer.entities.add({
+            name: "Model 2",
+            position: position2,
+            orientation: orientation2,
+            model: {
+                uri: './3D_data/HyojunCCTV.glb',
+                scale: 10.0,
+                minimumPixelSize: 128
+            }
+        });
+
+        // 3つ目の3Dモデルの追加
+        const position3 = Cesium.Cartesian3.fromDegrees(130.455253, 33.579203, 0); // 別の場所
+        const heading3 = Cesium.Math.toRadians(90); // 90度の回転
+        const pitch3 = Cesium.Math.toRadians(0);
+        const roll3 = Cesium.Math.toRadians(0);
+        const orientation3 = Cesium.Transforms.headingPitchRollQuaternion(position3, new Cesium.HeadingPitchRoll(heading3, pitch3, roll3));
+
+        viewer.entities.add({
+            name: "Model 3",
+            position: position3,
+            orientation: orientation3,
+            model: {
+                uri: './3D_data/untitled.glb',
+                scale: 10.0,
+                minimumPixelSize: 128
+            }
+        });
+
+        // カメラを3つのモデルが見える位置に移動
+        viewer.zoomTo(viewer.entities);
+
+        //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/chatgpt_3d_3tsui.html
+    </script>
+</body>
+</html>
+        
+
+                
