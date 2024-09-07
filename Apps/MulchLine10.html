@@ -35,7 +35,7 @@
 
         // 同じフォルダ内のCZMLファイルをロード
         var czmlDataSource = new Cesium.CzmlDataSource();
-        czmlDataSource.load('沖縄局名_10points.czml').then(function(dataSource) {
+        czmlDataSource.load('10points.czml').then(function(dataSource) {
             viewer.dataSources.add(dataSource);
             viewer.zoomTo(dataSource); // すべてのポイントにズーム
         });
