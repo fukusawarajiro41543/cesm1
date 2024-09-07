@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Models in Fukuoka</title>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.100/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.100/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <style>
+        html, body, #cesiumContainer {
+            width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="cesiumContainer"></div>
+
+    <script>
+        // Cesium Ionトークンの設定
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE'; // ここにあなたのトークンを設定
+
+        // Cesium Viewerの初期化
+        const viewer = new Cesium.Viewer('cesiumContainer', {
+            terrainProvider: Cesium.createWorldTerrain(),  // 世界地形データの追加
+            shouldAnimate: true
+        });
+
+        // CZMLデータの読み込み
+        viewer.dataSources.add(Cesium.CzmlDataSource.load('./fukuoka_models.czml')).then(function (dataSource) {
+            viewer.clock.shouldAnimate = true;  // アニメーションを有効化
+
+            // カメラを最初のモデルにズーム
+            const model1Position = Cesium.Cartesian3.fromDegrees(130.4017, 33.5902, 100);
+            viewer.camera.flyTo({
+                destination: model1Position,
+                orientation: {
+                    heading: Cesium.Math.toRadians(0),  // 回転角度（度からラジアンに変換）
+                    pitch: Cesium.Math.toRadians(-30),  // カメラの角度調整
+                    roll: 0.0
+                }
+            });
+        });
+
+        // 地表の高さに基づいて3Dモデルが地面に隠れないように調整
+        viewer.scene.globe.depthTestAgainstTerrain = true;
+
+        // 画面のリサイズに対応
+        window.addEventListener('resize', function () {
+            viewer.resize();
+        });
+
+        //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/index.html
+    </script>
+</body>
+</html>
