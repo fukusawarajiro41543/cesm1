@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Line from Ground to Elevated Points and Orange Line Between Points</title>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.100/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.100/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <style>
+        html, body, #cesiumContainer {
+            width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="cesiumContainer"></div>
+
+    <script>
+        // Cesium Ionトークンの設定
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE'; // ここにあなたのトークンを設定
+
+        // Cesium Viewerの初期化
+        const viewer = new Cesium.Viewer('cesiumContainer', {
+            terrainProvider: Cesium.createWorldTerrain(),  // 世界地形データ
+            shouldAnimate: true
+        });
+
+        // CZMLデータをJavaScript内に組み込む
+        const czmlData = [
+            {
+                "id": "document",
+                "name": "CZML with Points, Lines, and 3D Models",
+                "version": "1.0"
+            },
+            // 高さを持つPoint 1　屋敷平
+            {
+                "id": "point1",
+                "name": "Fukuoka Elevated Point 1",
+                "position": {
+                    "cartographicDegrees": [130.37325, 31.32191667, 500]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            130.37325, 31.32191667, 0,  // 地面 (GL)
+                            130.37325, 31.32191667, 500  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 3
+                }
+            },
+            // 高さを持つPoint 2　屋久島
+            {
+                "id": "point2",
+                "name": "Fukuoka Elevated Point 2",
+                "position": {
+                    "cartographicDegrees": [130.3989167, 30.37522222, 1000]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [0, 255, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            130.3989167, 30.37522222, 0,  // 地面 (GL)
+                            130.3989167, 30.37522222, 1000  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [0, 255, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 3
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            130.37325, 31.32191667, 500,  // Point 1　屋敷平
+                            130.3989167, 30.37522222, 1000   // Point 2　屋久島
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 3D Model 1　屋敷平
+            {
+                "id": "model1",
+                "name": "Fukuoka Model 1",
+                "position": {
+                    "cartographicDegrees": [130.37325, 31.32191667, 500]  // 高度100mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/屋敷平.glb",  // 3Dモデルのパス
+                    "scale": 1.0,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1.0,
+                    "heading": 0,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D Model 2　屋久島
+            {
+                "id": "model2",
+                "name": "Fukuoka Model 2",
+                "position": {
+                    "cartographicDegrees": [130.3989167, 30.37522222, 1000]  // 高度150mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/屋久島.glb",  // 3Dモデルのパス
+                    "scale": 1.0,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1.0,
+                    "heading": 90,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            }
+        ];
+
+        // CZMLデータをCesiumに追加
+        const czmlDataSource = new Cesium.CzmlDataSource();
+        czmlDataSource.load(czmlData);
+        viewer.dataSources.add(czmlDataSource);
+
+        // カメラを最初のモデルにズーム　屋久島にズーム
+        viewer.zoomTo(czmlDataSource).then(function() {
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(130.3989167, 30.37522222, 300),
+                orientation: {
+                    heading: Cesium.Math.toRadians(0),
+                    pitch: Cesium.Math.toRadians(-45),
+                    roll: 0.0
+                }
+            });
+        });
+
+        // 地形に対する深度テストを有効にしてモデルが地面に隠れないようにする
+        viewer.scene.globe.depthTestAgainstTerrain = true;
+        //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/alldata_yashiki_yaku.html
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
