@@ -1,0 +1,1647 @@
+[
+    {
+        "id": "document",
+        "name": "沖縄局名_Points",
+        "version": "1.0"
+    },
+    {
+        "id": "point1",
+        "name": "尾巡山",
+        "position": {
+            "cartographicDegrees": [130.52838888888891, 31.31808333333333, 22]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "尾巡山",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line1",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [130.52838888888891, 31.31808333333333, 22, 130.52838888888891, 31.31808333333333, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point2",
+        "name": "屋敷平",
+        "position": {
+            "cartographicDegrees": [130.37325000000001, 31.32191666666667, 30]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "屋敷平",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line2",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [130.37325000000001, 31.32191666666667, 30, 130.37325000000001, 31.32191666666667, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point3",
+        "name": "屋久島",
+        "position": {
+            "cartographicDegrees": [130.39891666666671, 30.37522222222222, 61.5]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "屋久島",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line3",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [130.39891666666671, 30.37522222222222, 61.5, 130.39891666666671, 30.37522222222222, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point4",
+        "name": "中之島",
+        "position": {
+            "cartographicDegrees": [129.91269444444441, 29.823666666666671, 45.5]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "中之島",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line4",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [129.91269444444441, 29.823666666666671, 45.5, 129.91269444444441, 29.823666666666671, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point5",
+        "name": "悪石島",
+        "position": {
+            "cartographicDegrees": [129.59547222222221, 29.464944444444441, 29]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "悪石島",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line5",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [129.59547222222221, 29.464944444444441, 29, 129.59547222222221, 29.464944444444441, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point6",
+        "name": "湯湾岳",
+        "position": {
+            "cartographicDegrees": [129.33113888888889, 28.29836111111111, 35.100000000000001]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "湯湾岳",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line6",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [129.33113888888889, 28.29836111111111, 35.100000000000001, 129.33113888888889, 28.29836111111111, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point7",
+        "name": "徳之島",
+        "position": {
+            "cartographicDegrees": [128.96127777777781, 27.79741666666667, 29]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "徳之島",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line7",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.96127777777781, 27.79741666666667, 29, 128.96127777777781, 27.79741666666667, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point8",
+        "name": "西銘岳",
+        "position": {
+            "cartographicDegrees": [128.2897777777778, 26.792305555555561, 32]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "西銘岳",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line8",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.2897777777778, 26.792305555555561, 32, 128.2897777777778, 26.792305555555561, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point9",
+        "name": "辺野喜",
+        "position": {
+            "cartographicDegrees": [128.2585277777778, 26.788138888888891, 15.4]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "辺野喜",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line9",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.2585277777778, 26.788138888888891, 15.4, 128.2585277777778, 26.788138888888891, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point10",
+        "name": "re辺野喜",
+        "position": {
+            "cartographicDegrees": [128.25513888888889, 26.783555555555559, 15]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "re辺野喜",
+            "font": "0.6pt sans-serif",          // フォント0.6
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line10",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.25513888888889, 26.783555555555559, 15, 128.25513888888889, 26.783555555555559, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point11",
+        "name": "国頭",
+        "position": {
+            "cartographicDegrees": [128.24324999999999, 26.752111111111109, 20]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "国頭",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line11",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.24324999999999, 26.752111111111109, 20, 128.24324999999999, 26.752111111111109, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point12",
+        "name": "re普久川",
+        "position": {
+            "cartographicDegrees": [128.27466666666669, 26.74538888888889, 15]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "re普久川",
+            "font": "0.6pt sans-serif",          // フォント0.6
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line12",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.27466666666669, 26.74538888888889, 15, 128.27466666666669, 26.74538888888889, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point13",
+        "name": "普久川",
+        "position": {
+            "cartographicDegrees": [128.28025, 26.74283333333333, 20]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "普久川",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line13",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.28025, 26.74283333333333, 20, 128.28025, 26.74283333333333, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point14",
+        "name": "re安波左岸",
+        "position": {
+            "cartographicDegrees": [128.27072222222219, 26.711833333333331, 15]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "re安波左岸",
+            "font": "0.6pt sans-serif",          // フォント0.6
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line14",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.27072222222219, 26.711833333333331, 15, 128.27072222222219, 26.711833333333331, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point15",
+        "name": "安波",
+        "position": {
+            "cartographicDegrees": [128.26872222222221, 26.70952777777778, 20]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "安波",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line15",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.26872222222221, 26.70952777777778, 20, 128.26872222222221, 26.70952777777778, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point16",
+        "name": "re排持山",
+        "position": {
+            "cartographicDegrees": [128.24366666666671, 26.70227777777778, 15]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "re排持山",
+            "font": "0.6pt sans-serif",          // フォント0.6
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line16",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.24366666666671, 26.70227777777778, 15, 128.24366666666671, 26.70227777777778, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point17",
+        "name": "re伊湯岳",
+        "position": {
+            "cartographicDegrees": [128.20636111111111, 26.689694444444449, 15]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "re伊湯岳",
+            "font": "0.6pt sans-serif",          // フォント0.6
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line17",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.20636111111111, 26.689694444444449, 15, 128.20636111111111, 26.689694444444449, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point18",
+        "name": "新川",
+        "position": {
+            "cartographicDegrees": [128.24416666666659, 26.679833333333331, 23.399999999999999]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "新川",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line18",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.24416666666659, 26.679833333333331, 23.399999999999999, 128.24416666666659, 26.679833333333331, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point19",
+        "name": "re大保",
+        "position": {
+            "cartographicDegrees": [128.1491388888889, 26.654361111111111, 15]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "re大保",
+            "font": "0.6pt sans-serif",          // フォント0.6
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line19",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.1491388888889, 26.654361111111111, 15, 128.1491388888889, 26.654361111111111, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point20",
+        "name": "大保",
+        "position": {
+            "cartographicDegrees": [128.14641666666671, 26.650111111111109, 20]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "大保",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line20",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.14641666666671, 26.650111111111109, 20, 128.14641666666671, 26.650111111111109, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point21",
+        "name": "re福地",
+        "position": {
+            "cartographicDegrees": [128.17263888888891, 26.649583333333329, 15]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "re福地",
+            "font": "0.6pt sans-serif",          // フォント0.6
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line21",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.17263888888891, 26.649583333333329, 15, 128.17263888888891, 26.649583333333329, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point22",
+        "name": "福地",
+        "position": {
+            "cartographicDegrees": [128.1757777777778, 26.647555555555559, 7]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "福地",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line22",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.1757777777778, 26.647555555555559, 7, 128.1757777777778, 26.647555555555559, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point23",
+        "name": "re東福地",
+        "position": {
+            "cartographicDegrees": [128.1785555555555, 26.645833333333329, 15]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "re東福地",
+            "font": "0.6pt sans-serif",          // フォント0.6
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line23",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.1785555555555, 26.645833333333329, 15, 128.1785555555555, 26.645833333333329, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point24",
+        "name": "八重岳",
+        "position": {
+            "cartographicDegrees": [127.92749999999999, 26.633833333333332, 32.5]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "八重岳",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line24",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.92749999999999, 26.633833333333332, 32.5, 127.92749999999999, 26.633833333333332, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point25",
+        "name": "川上",
+        "position": {
+            "cartographicDegrees": [128.01933333333329, 26.615916666666671, 33.5]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "川上",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line25",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.01933333333329, 26.615916666666671, 33.5, 128.01933333333329, 26.615916666666671, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point26",
+        "name": "比井田原",
+        "position": {
+            "cartographicDegrees": [127.99694444444449, 26.608555555555562, 13.9]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "比井田原",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line26",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.99694444444449, 26.608555555555562, 13.9, 127.99694444444449, 26.608555555555562, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point27",
+        "name": "大北",
+        "position": {
+            "cartographicDegrees": [127.9870277777778, 26.607472222222221, 30.199999999999999]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "大北",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line27",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.9870277777778, 26.607472222222221, 30.199999999999999, 127.9870277777778, 26.607472222222221, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point28",
+        "name": "羽地",
+        "position": {
+            "cartographicDegrees": [128.02102777777779, 26.606000000000002, 19.199999999999999]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "羽地",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line28",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.02102777777779, 26.606000000000002, 19.199999999999999, 128.02102777777779, 26.606000000000002, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point29",
+        "name": "名護",
+        "position": {
+            "cartographicDegrees": [127.9984722222222, 26.603305555555561, 29.5]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "名護",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line29",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.9984722222222, 26.603305555555561, 29.5, 127.9984722222222, 26.603305555555561, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point30",
+        "name": "多野岳",
+        "position": {
+            "cartographicDegrees": [128.0454722222222, 26.601416666666669, 34]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "多野岳",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line30",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.0454722222222, 26.601416666666669, 34, 128.0454722222222, 26.601416666666669, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point31",
+        "name": "re名護",
+        "position": {
+            "cartographicDegrees": [127.9951388888889, 26.59011111111111, 15]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "re名護",
+            "font": "0.6pt sans-serif",          // フォント0.6
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line31",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.9951388888889, 26.59011111111111, 15, 127.9951388888889, 26.59011111111111, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point32",
+        "name": "漢那",
+        "position": {
+            "cartographicDegrees": [127.9510555555556, 26.483666666666672, 50.299999999999997]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "漢那",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line32",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.9510555555556, 26.483666666666672, 50.299999999999997, 127.9510555555556, 26.483666666666672, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point33",
+        "name": "金武",
+        "position": {
+            "cartographicDegrees": [127.9338888888889, 26.467833333333331, 19.800000000000001]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "金武",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line33",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.9338888888889, 26.467833333333331, 19.800000000000001, 127.9338888888889, 26.467833333333331, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point34",
+        "name": "石川",
+        "position": {
+            "cartographicDegrees": [127.8046388888889, 26.393055555555559, 40]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "石川",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line34",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.8046388888889, 26.393055555555559, 40, 127.8046388888889, 26.393055555555559, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point35",
+        "name": "嘉手納",
+        "position": {
+            "cartographicDegrees": [127.7475833333333, 26.330777777777779, 29]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "嘉手納",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line35",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.7475833333333, 26.330777777777779, 29, 127.7475833333333, 26.330777777777779, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point36",
+        "name": "勝連",
+        "position": {
+            "cartographicDegrees": [127.88549999999999, 26.322805555555551, 30]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "勝連",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line36",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.88549999999999, 26.322805555555551, 30, 127.88549999999999, 26.322805555555551, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point37",
+        "name": "安謝",
+        "position": {
+            "cartographicDegrees": [127.67780555555559, 26.243222222222219, 45]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "安謝",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line37",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.67780555555559, 26.243222222222219, 45, 127.67780555555559, 26.243222222222219, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point38",
+        "name": "那覇",
+        "position": {
+            "cartographicDegrees": [127.6908333333333, 26.227722222222219, 58.5]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "那覇",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line38",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.6908333333333, 26.227722222222219, 58.5, 127.6908333333333, 26.227722222222219, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point39",
+        "name": "防災沖縄",
+        "position": {
+            "cartographicDegrees": [127.681434, 26.212813000000001, 50]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "防災沖縄",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line39",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.681434, 26.212813000000001, 50, 127.681434, 26.212813000000001, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point40",
+        "name": "与那原",
+        "position": {
+            "cartographicDegrees": [127.7517222222222, 26.200749999999999, 37.5]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "与那原",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line40",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.7517222222222, 26.200749999999999, 37.5, 127.7517222222222, 26.200749999999999, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point41",
+        "name": "大里",
+        "position": {
+            "cartographicDegrees": [127.7596666666667, 26.170500000000001, 54]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "大里",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line41",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.7596666666667, 26.170500000000001, 54, 127.7596666666667, 26.170500000000001, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "point42",
+        "name": "与座",
+        "position": {
+            "cartographicDegrees": [127.7253888888889, 26.123249999999999, 43]
+        },
+        "point": {
+            "pixelSize": 0.59999999999999998,
+            "color": {
+                "rgba": [255, 0, 0, 255]
+            }
+        },
+        "label": {
+            "text": "与座",
+            "font": "10pt sans-serif",          // フォント0.6→10
+            "style": "FILL_AND_OUTLINE",
+            "outlineWidth": 0.59999999999999998,
+            "verticalOrigin": "BOTTOM",
+            "pixelOffset": {
+                "cartesian2": [0, -12]
+            }
+        }
+    },
+    {
+        "id": "line42",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.7253888888889, 26.123249999999999, 43, 127.7253888888889, 26.123249999999999, 0]
+            },
+            "width": 0.59999999999999998,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [0, 255, 255, 255]
+                    }
+                }
+            }
+        }
+    }
+]
+
+
