@@ -1,0 +1,52 @@
+[
+    {
+        "id": "document",
+        "name": "3D Models in Fukuoka",
+        "version": "1.0"
+    },
+    {
+        "id": "model1",
+        "name": "Fukuoka Model 1",
+        "position": {
+            "cartographicDegrees": [130.4017, 33.5902, 50]  // 経度, 緯度, 高度（福岡市中心）
+        },
+        "model": {
+            "gltf": "./3D_data/屋久島.glb",  // 3Dモデルへのパス
+            "scale": 1.0,
+            "minimumPixelSize": 64,  // 小さすぎて地面に隠れないようにする
+            "heading": 0,  // 度単位での回転角度
+            "pitch": 0,
+            "roll": 0
+        }
+    },
+    {
+        "id": "model2",
+        "name": "Fukuoka Model 2",
+        "position": {
+            "cartographicDegrees": [130.4027, 33.5912, 50]  // 2つ目のモデル位置
+        },
+        "model": {
+            "gltf": "./3D_data/川上.glb",
+            "scale": 1.0,
+            "minimumPixelSize": 64,
+            "heading": 90,  // 度単位での回転角度
+            "pitch": 0,
+            "roll": 0
+        }
+    },
+    {
+        "id": "model3",
+        "name": "Fukuoka Model 3",
+        "position": {
+            "cartographicDegrees": [130.4037, 33.5922, 50]  // 3つ目のモデル位置
+        },
+        "model": {
+            "gltf": "./3D_data/名護.glb",
+            "scale": 1.0,
+            "minimumPixelSize": 64,
+            "heading": 180,  // 度単位での回転角度
+            "pitch": 0,
+            "roll": 0
+        }
+    }
+]

@@ -25,7 +25,7 @@
     const viewer = new Cesium.Viewer('cesiumContainer');
 
     // 外部のCZMLファイルを読み込む
-    Cesium.CzmlDataSource.load('lines.czml')
+    Cesium.CzmlDataSource.load('沖縄lines.czml')
       .then(function(dataSource) {
         viewer.dataSources.add(dataSource);
       })
@@ -33,12 +33,21 @@
         console.error('CZMLの読み込みに失敗しました:', error);
       });
 
+        // 同じフォルダ内のCZMLファイルをロード
+        var czmlDataSource = new Cesium.CzmlDataSource();
+        czmlDataSource.load('10points.czml').then(function(dataSource) {
+            viewer.dataSources.add(dataSource);
+            viewer.zoomTo(dataSource); // すべてのポイントにズーム
+        });
+
+
+
     // カメラを沖縄総合事務局周辺に設定
     viewer.camera.setView({
       destination: Cesium.Cartesian3.fromDegrees(127.690875, 26.227792, 500000) // 高度を500kmに設定
     });
 
-    //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/MulchLine.html
+    //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/MulchLine10.html
   </script>
 </body>
 </html>
