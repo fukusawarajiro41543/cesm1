@@ -1,0 +1,4055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Line from Ground to Elevated Points and Orange Line Between Points</title>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.100/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.100/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <style>
+        html, body, #cesiumContainer {
+            width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="cesiumContainer"></div>
+
+    <script>
+        // Cesium Ionトークンの設定
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE'; // ここにあなたのトークンを設定
+
+        // Cesium Viewerの初期化
+        const viewer = new Cesium.Viewer('cesiumContainer', {
+            terrainProvider: Cesium.createWorldTerrain(),  // 世界地形データ
+            shouldAnimate: true
+        });
+
+        // CZMLデータをJavaScript内に組み込む
+        const czmlData = [
+            {
+                "id": "document",
+                "name": "CZML with Points, Lines, and 3D Models",
+                "version": "1.0"
+            },
+////////////////////////////////////////////////////////////////////////
+            // 高さを持つ尾巡山(屋敷平)
+            {
+                "id": "尾巡山(屋敷平) ",
+                "name": "Okinawa 尾巡山(屋敷平)",
+                "position": {
+                    "cartographicDegrees": [130.52838888888891, 31.31808333333333, 18]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            130.52838888888891, 31.31808333333333, 0,  // 地面 (GL)
+                            130.52838888888891, 31.31808333333333, 18  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 3
+                }
+            },
+            // 高さを持つ屋敷平(尾巡山)　
+            {
+                "id": "屋敷平(尾巡山) ",
+                "name": " Okinawa 屋敷平(尾巡山) ",
+                "position": {
+                    "cartographicDegrees": [130.37325000000001, 31.32191667, 19]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            130.37325000000001, 31.32191667, 0,  // 地面 (GL)
+                            130.37325000000001, 31.32191667, 19  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 3
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            130.52838888888891, 31.31808333333333, 18,  // Point 1
+                            130.37325000000001, 31.32191667, 19   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ普久川(西銘岳)
+            {
+                "id": "普久川(西銘岳) ",
+                "name": "Okinawa 普久川(西銘岳)",
+                "position": {
+                    "cartographicDegrees": [128.28025, 26.74283333333333, 20]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.28025, 26.74283333333333, 0,  // 地面 (GL)
+                            128.28025, 26.74283333333333, 20  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つre普久川　
+            {
+                "id": "re普久川 ",
+                "name": " Okinawa re普久川 ",
+                "position": {
+                    "cartographicDegrees": [128.27466666666669, 26.74538888888889, 15]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.27466666666669, 26.74538888888889, 0,  // 地面 (GL)
+                            128.27466666666669, 26.74538888888889, 15  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.28025, 26.74283333333333, 20,  // Point1
+                            128.27466666666669, 26.74538888888889, 15   // Point 2　
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ福地(多野岳)
+            {
+                "id": "福地(多野岳) ",
+                "name": "Okinawa 福地(多野岳)",
+                "position": {
+                    "cartographicDegrees": [128.1757777777778, 26.647555555555559, 7]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.1757777777778, 26.647555555555559, 0,  // 地面 (GL)
+                            128.1757777777778, 26.647555555555559, 7  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つre東福地　
+            {
+                "id": "re東福地 ",
+                "name": " Okinawa re東福地 ",
+                "position": {
+                    "cartographicDegrees": [128.1785555555555, 26.645833333333329, 15]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.1785555555555, 26.645833333333329, 0,  // 地面 (GL)
+                            128.1785555555555, 26.645833333333329, 15  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.1757777777778, 26.647555555555559, 7,  // Point 1
+                            128.1785555555555, 26.645833333333329, 15   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ八重岳(漢那)
+            {
+                "id": "八重岳(漢那) ",
+                "name": "Okinawa 八重岳(漢那)",
+                "position": {
+                    "cartographicDegrees": [127.92749999999999, 26.633833333333332, 32.5]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.92749999999999, 26.633833333333332, 0,  // 地面 (GL)
+                            127.92749999999999, 26.633833333333332, 32.5  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ漢那(八重岳)　
+            {
+                "id": "漢那(八重岳) ",
+                "name": " Okinawa 漢那(八重岳) ",
+                "position": {
+                    "cartographicDegrees": [127.9510555555556, 26.483666666666672, 50.299999999999997]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            127.9510555555556, 26.483666666666672, 0,  // 地面 (GL)
+                            127.9510555555556, 26.483666666666672, 50.299999999999997  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.92749999999999, 26.633833333333332, 32.5,  // Point 1
+                            127.9510555555556, 26.483666666666672, 50.299999999999997   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ屋久島(屋敷平)
+            {
+                "id": "屋久島(屋敷平) ",
+                "name": "Okinawa 屋久島(屋敷平)",
+                "position": {
+                    "cartographicDegrees": [130.39891666666671, 30.37522222222222, 53.5]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            130.39891666666671, 30.37522222222222, 0,  // 地面 (GL)
+                            130.39891666666671, 30.37522222222222, 53.5  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 3
+                }
+            },
+            // 高さを持つ屋敷平(屋久島)　
+            {
+                "id": "屋敷平(屋久島) ",
+                "name": " Okinawa 屋敷平(屋久島) ",
+                "position": {
+                    "cartographicDegrees": [130.37325000000001, 31.32191666666667, 30]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            130.37325000000001, 31.32191666666667, 0,  // 地面 (GL)
+                            130.37325000000001, 31.32191666666667, 30  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 3
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            130.39891666666671, 30.37522222222222, 53.5,  // Point 1
+                            130.37325000000001, 31.32191666666667, 30   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ安波(新川)
+            {
+                "id": "安波(新川) ",
+                "name": "Okinawa 安波(新川)",
+                "position": {
+                    "cartographicDegrees": [128.26872222222221, 26.70952777777778, 20]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.26872222222221, 26.70952777777778, 0,  // 地面 (GL)
+                            128.26872222222221, 26.70952777777778, 20  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つre安波左岸　
+            {
+                "id": "re安波左岸 ",
+                "name": " Okinawa re安波左岸 ",
+                "position": {
+                    "cartographicDegrees": [128.27072222222219, 26.711833333333331, 15]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.27072222222219, 26.711833333333331, 0,  // 地面 (GL)
+                            128.27072222222219, 26.711833333333331, 15  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.26872222222221, 26.70952777777778, 20,  // Point1
+                            128.27072222222219, 26.711833333333331, 15   // Point 2　
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つre名護
+            {
+                "id": "re名護 ",
+                "name": "Okinawa re名護",
+                "position": {
+                    "cartographicDegrees": [127.9951388888889, 26.59011111111111, 15]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.9951388888889, 26.59011111111111, 0,  // 地面 (GL)
+                            127.9951388888889, 26.59011111111111, 15  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ八重岳(大北)　
+            {
+                "id": "八重岳(大北) ",
+                "name": " Okinawa 八重岳(大北) ",
+                "position": {
+                    "cartographicDegrees": [127.92749999999999, 26.633833333333332, 20.899999999999999]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            127.92749999999999, 26.633833333333332, 0,  // 地面 (GL)
+                            127.92749999999999, 26.633833333333332, 20.899999999999999  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.9951388888889, 26.59011111111111, 15,  // Point 1
+                            127.92749999999999, 26.633833333333332, 20.899999999999999   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ漢那(金武)
+            {
+                "id": "漢那(金武) ",
+                "name": "Okinawa 漢那(金武)",
+                "position": {
+                    "cartographicDegrees": [127.9510555555556, 26.483666666666672, 40]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.9510555555556, 26.483666666666672, 0,  // 地面 (GL)
+                            127.9510555555556, 26.483666666666672, 40  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ金武　
+            {
+                "id": "金武 ",
+                "name": " Okinawa 金武 ",
+                "position": {
+                    "cartographicDegrees": [127.9338888888889, 26.467833333333331, 19.800000000000001]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            127.9338888888889, 26.467833333333331, 0,  // 地面 (GL)
+                            127.9338888888889, 26.467833333333331, 19.800000000000001  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.9510555555556, 26.483666666666672, 40,  // Point 1
+                            127.9338888888889, 26.467833333333331, 19.800000000000001   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ中之島(屋久島)
+            {
+                "id": "中之島(屋久島) ",
+                "name": "Okinawa 中之島(屋久島)",
+                "position": {
+                    "cartographicDegrees": [129.91269444444441, 29.823666666666671, 45.5]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            129.91269444444441, 29.823666666666671, 0,  // 地面 (GL)
+                            129.91269444444441, 29.823666666666671, 45.5  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ屋久島(中之島)　
+            {
+                "id": "屋久島(中之島) ",
+                "name": " Okinawa 屋久島(中之島) ",
+                "position": {
+                    "cartographicDegrees": [130.39891666666671, 30.37522222222222, 61.5]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            130.39891666666671, 30.37522222222222, 0,  // 地面 (GL)
+                            130.39891666666671, 30.37522222222222, 61.5  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            129.91269444444441, 29.823666666666671, 45.5,  // Point 1
+                            130.39891666666671, 30.37522222222222, 61.5   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ国頭(安波)
+            {
+                "id": "国頭(安波) ",
+                "name": "Okinawa 国頭(安波)",
+                "position": {
+                    "cartographicDegrees": [128.24324999999999, 26.752111111111109, 15]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.24324999999999, 26.752111111111109, 0,  // 地面 (GL)
+                            128.24324999999999, 26.752111111111109, 15  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ安波(国頭)　
+            {
+                "id": "安波(国頭) ",
+                "name": " Okinawa 安波(国頭) ",
+                "position": {
+                    "cartographicDegrees": [128.26872222222221, 26.70952777777778, 15.5]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.26872222222221, 26.70952777777778, 0,  // 地面 (GL)
+                            128.26872222222221, 26.70952777777778, 15.5  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.24324999999999, 26.752111111111109, 15,  // Point1
+                            128.26872222222221, 26.70952777777778, 15.5   // Point 2　
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ羽地(川上)
+            {
+                "id": "羽地(川上) ",
+                "name": "Okinawa 羽地(川上)",
+                "position": {
+                    "cartographicDegrees": [128.02102777777779, 26.606000000000002, 19.199999999999999]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.02102777777779, 26.606000000000002, 0,  // 地面 (GL)
+                            128.02102777777779, 26.606000000000002, 19.199999999999999  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ川上(羽地)　
+            {
+                "id": "川上(羽地) ",
+                "name": " Okinawa 川上(羽地) ",
+                "position": {
+                    "cartographicDegrees": [128.01933333333329, 26.615916666666671, 33.5]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.01933333333329, 26.615916666666671, 0,  // 地面 (GL)
+                            128.01933333333329, 26.615916666666671, 33.5  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.02102777777779, 26.606000000000002, 19.199999999999999,  // Point 1
+                            128.01933333333329, 26.615916666666671, 33.5   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ漢那(石川)
+            {
+                "id": "漢那(石川) ",
+                "name": "Okinawa 漢那(石川)",
+                "position": {
+                    "cartographicDegrees": [127.9510555555556, 26.483666666666672, 50.299999999999997]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.9510555555556, 26.483666666666672, 0,  // 地面 (GL)
+                            127.9510555555556, 26.483666666666672, 50.299999999999997  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ石川(漢那)　
+            {
+                "id": "石川(漢那) ",
+                "name": " Okinawa 石川(漢那) ",
+                "position": {
+                    "cartographicDegrees": [127.8046388888889, 26.393055555555559, 40]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            127.8046388888889, 26.393055555555559, 0,  // 地面 (GL)
+                            127.8046388888889, 26.393055555555559, 40  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.9510555555556, 26.483666666666672, 50.299999999999997,  // Point 1
+                            127.8046388888889, 26.393055555555559, 40   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ悪石島(中之島)
+            {
+                "id": "悪石島(中之島) ",
+                "name": "Okinawa 悪石島(中之島)",
+                "position": {
+                    "cartographicDegrees": [129.59547222222221, 29.464944444444441, 29]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            129.59547222222221, 29.464944444444441, 0,  // 地面 (GL)
+                            129.59547222222221, 29.464944444444441, 29  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ中之島(悪石島)　
+            {
+                "id": "中之島(悪石島) ",
+                "name": " Okinawa 中之島(悪石島) ",
+                "position": {
+                    "cartographicDegrees": [129.91269444444441, 29.823666666666671, 45.5]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            129.91269444444441, 29.823666666666671, 0,  // 地面 (GL)
+                            129.91269444444441, 29.823666666666671, 45.5  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            129.59547222222221, 29.464944444444441, 29,  // Point 1
+                            129.91269444444441, 29.823666666666671, 45.5   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つre安波左岸
+            {
+                "id": "re安波左岸 ",
+                "name": "Okinawa re安波左岸",
+                "position": {
+                    "cartographicDegrees": [128.27072222222219, 26.711833333333331, 15]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.27072222222219, 26.711833333333331, 0,  // 地面 (GL)
+                            128.27072222222219, 26.711833333333331, 15  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つre排持山　
+            {
+                "id": "re排持山 ",
+                "name": " Okinawa re排持山 ",
+                "position": {
+                    "cartographicDegrees": [128.24366666666671, 26.70227777777778, 15]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.24366666666671, 26.70227777777778, 0,  // 地面 (GL)
+                            128.24366666666671, 26.70227777777778, 15  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.27072222222219, 26.711833333333331, 15,  // Point1
+                            128.24366666666671, 26.70227777777778, 15   // Point 2　
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ名護(川上)
+            {
+                "id": "名護(川上) ",
+                "name": "Okinawa 名護(川上)",
+                "position": {
+                    "cartographicDegrees": [127.9984722222222, 26.603305555555561, 29.5]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.9984722222222, 26.603305555555561, 0,  // 地面 (GL)
+                            127.9984722222222, 26.603305555555561, 29.5  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ川上(名護)　
+            {
+                "id": "川上(名護) ",
+                "name": " Okinawa 川上(名護) ",
+                "position": {
+                    "cartographicDegrees": [128.01933333333329, 26.615916666666671, 33.5]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.01933333333329, 26.615916666666671, 0,  // 地面 (GL)
+                            128.01933333333329, 26.615916666666671, 33.5  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.9984722222222, 26.603305555555561, 29.5,  // Point 1
+                            128.01933333333329, 26.615916666666671, 33.5   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ那覇(嘉手納)
+            {
+                "id": "那覇(嘉手納) ",
+                "name": "Okinawa 那覇(嘉手納)",
+                "position": {
+                    "cartographicDegrees": [127.6908333333333, 26.227722222222219, 58.5]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.6908333333333, 26.227722222222219, 0,  // 地面 (GL)
+                            127.6908333333333, 26.227722222222219, 58.5  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ嘉手納(那覇)　
+            {
+                "id": "嘉手納(那覇) ",
+                "name": " Okinawa 嘉手納(那覇) ",
+                "position": {
+                    "cartographicDegrees": [127.7475833333333, 26.330777777777779, 29]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            127.7475833333333, 26.330777777777779, 0,  // 地面 (GL)
+                            127.7475833333333, 26.330777777777779, 29  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.6908333333333, 26.227722222222219, 58.5,  // Point 1
+                            127.7475833333333, 26.330777777777779, 29   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ湯湾岳(悪石島)
+            {
+                "id": "湯湾岳(悪石島) ",
+                "name": "Okinawa 湯湾岳(悪石島)",
+                "position": {
+                    "cartographicDegrees": [129.33113888888889, 28.29836111111111, 35.100000000000001]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            129.33113888888889, 28.29836111111111, 0,  // 地面 (GL)
+                            129.33113888888889, 28.29836111111111, 35.100000000000001  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ悪石島(湯湾岳)　
+            {
+                "id": "悪石島(湯湾岳) ",
+                "name": " Okinawa 悪石島(湯湾岳) ",
+                "position": {
+                    "cartographicDegrees": [129.59547222222221, 29.464944444444441, 29]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            129.59547222222221, 29.464944444444441, 0,  // 地面 (GL)
+                            129.59547222222221, 29.464944444444441, 29  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            129.33113888888889, 28.29836111111111, 35.100000000000001,  // Point 1
+                            129.59547222222221, 29.464944444444441, 29   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つre福地
+            {
+                "id": "re福地 ",
+                "name": "Okinawa re福地",
+                "position": {
+                    "cartographicDegrees": [128.17263888888891, 26.649583333333329, 15]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.17263888888891, 26.649583333333329, 0,  // 地面 (GL)
+                            128.17263888888891, 26.649583333333329, 15  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つre伊湯岳　
+            {
+                "id": "re伊湯岳 ",
+                "name": " Okinawa re伊湯岳 ",
+                "position": {
+                    "cartographicDegrees": [128.20636111111111, 26.689694444444449, 15]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.20636111111111, 26.689694444444449, 0,  // 地面 (GL)
+                            128.20636111111111, 26.689694444444449, 15  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.17263888888891, 26.649583333333329, 15,  // Point1
+                            128.20636111111111, 26.689694444444449, 15   // Point 2　
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ大北(比井田原)
+            {
+                "id": "大北(比井田原) ",
+                "name": "Okinawa 大北(比井田原)",
+                "position": {
+                    "cartographicDegrees": [127.9870277777778, 26.607472222222221, 25.199999999999999]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.9870277777778, 26.607472222222221, 0,  // 地面 (GL)
+                            127.9870277777778, 26.607472222222221, 25.199999999999999  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ比井田原(大北)　
+            {
+                "id": "比井田原(大北) ",
+                "name": " Okinawa 比井田原(大北) ",
+                "position": {
+                    "cartographicDegrees": [127.99694444444449, 26.608555555555562, 13.9]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            127.99694444444449, 26.608555555555562, 0,  // 地面 (GL)
+                            127.99694444444449, 26.608555555555562, 13.9  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.9870277777778, 26.607472222222221, 25.199999999999999,  // Point 1
+                            127.99694444444449, 26.608555555555562, 13.9   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ石川(安謝)
+            {
+                "id": "石川(安謝) ",
+                "name": "Okinawa 石川(安謝)",
+                "position": {
+                    "cartographicDegrees": [127.8046388888889, 26.393055555555559, 29]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.8046388888889, 26.393055555555559, 0,  // 地面 (GL)
+                            127.8046388888889, 26.393055555555559, 29  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ那覇(石川)　
+            {
+                "id": "那覇(石川) ",
+                "name": " Okinawa 那覇(石川) ",
+                "position": {
+                    "cartographicDegrees": [127.6908333333333, 26.227722222222219, 58.5]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            127.6908333333333, 26.227722222222219, 0,  // 地面 (GL)
+                            127.6908333333333, 26.227722222222219, 58.5  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.8046388888889, 26.393055555555559, 29,  // Point 1
+                            127.6908333333333, 26.227722222222219, 58.5   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ湯湾岳(徳之島)
+            {
+                "id": "湯湾岳(徳之島) ",
+                "name": "Okinawa 湯湾岳(徳之島)",
+                "position": {
+                    "cartographicDegrees": [129.33113888888889, 28.29836111111111, 35.100000000000001]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            129.33113888888889, 28.29836111111111, 0,  // 地面 (GL)
+                            129.33113888888889, 28.29836111111111, 35.100000000000001  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ徳之島(湯湾岳)　
+            {
+                "id": "徳之島(湯湾岳) ",
+                "name": " Okinawa 徳之島(湯湾岳) ",
+                "position": {
+                    "cartographicDegrees": [128.96127777777781, 27.79741666666667, 29]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.96127777777781, 27.79741666666667, 0,  // 地面 (GL)
+                            128.96127777777781, 27.79741666666667, 29  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            129.33113888888889, 28.29836111111111, 35.100000000000001,  // Point 1
+                            128.96127777777781, 27.79741666666667, 29   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つre排持山
+            {
+                "id": "re排持山 ",
+                "name": "Okinawa re排持山",
+                "position": {
+                    "cartographicDegrees": [128.24366666666671, 26.70227777777778, 15]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.24366666666671, 26.70227777777778, 0,  // 地面 (GL)
+                            128.24366666666671, 26.70227777777778, 15  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ新川(安波)　
+            {
+                "id": "新川(安波) ",
+                "name": " Okinawa 新川(安波) ",
+                "position": {
+                    "cartographicDegrees": [128.24416666666659, 26.679833333333331, 23.399999999999999]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.24416666666659, 26.679833333333331, 0,  // 地面 (GL)
+                            128.24416666666659, 26.679833333333331, 23.399999999999999  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.24366666666671, 26.70227777777778, 15,  // Point1
+                            128.24416666666659, 26.679833333333331, 23.399999999999999   // Point 2　
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ大北(名護)
+            {
+                "id": "大北(名護) ",
+                "name": "Okinawa 大北(名護)",
+                "position": {
+                    "cartographicDegrees": [127.9870277777778, 26.607472222222221, 30.199999999999999]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.9870277777778, 26.607472222222221, 0,  // 地面 (GL)
+                            127.9870277777778, 26.607472222222221, 30.199999999999999  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ名護(大北)　
+            {
+                "id": "名護(大北) ",
+                "name": " Okinawa 名護(大北) ",
+                "position": {
+                    "cartographicDegrees": [127.9984722222222, 26.603305555555561, 25]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            127.9984722222222, 26.603305555555561, 0,  // 地面 (GL)
+                            127.9984722222222, 26.603305555555561, 25  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.9870277777778, 26.607472222222221, 30.199999999999999,  // Point 1
+                            127.9984722222222, 26.603305555555561, 25   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ那覇(防災沖縄県)
+            {
+                "id": "那覇(防災沖縄県) ",
+                "name": "Okinawa 那覇(防災沖縄県)",
+                "position": {
+                    "cartographicDegrees": [127.6908333333333, 26.227722222222219, 58.5]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.6908333333333, 26.227722222222219, 0,  // 地面 (GL)
+                            127.6908333333333, 26.227722222222219, 58.5  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ防災沖縄　
+            {
+                "id": "防災沖縄 ",
+                "name": " Okinawa 防災沖縄 ",
+                "position": {
+                    "cartographicDegrees": [127.681434, 26.212813000000001, 50]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            127.681434, 26.212813000000001, 0,  // 地面 (GL)
+                            127.681434, 26.212813000000001, 50  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.6908333333333, 26.227722222222219, 58.5,  // Point 1
+                            127.681434, 26.212813000000001, 50   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ西銘岳(徳之島)
+            {
+                "id": "西銘岳(徳之島) ",
+                "name": "Okinawa 西銘岳(徳之島)",
+                "position": {
+                    "cartographicDegrees": [128.2897777777778, 26.792305555555561, 32]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.2897777777778, 26.792305555555561, 0,  // 地面 (GL)
+                            128.2897777777778, 26.792305555555561, 32  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ徳之島(西銘岳)　
+            {
+                "id": "徳之島(西銘岳) ",
+                "name": " Okinawa 徳之島(西銘岳) ",
+                "position": {
+                    "cartographicDegrees": [128.96127777777781, 27.79741666666667, 29]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.96127777777781, 27.79741666666667, 0,  // 地面 (GL)
+                            128.96127777777781, 27.79741666666667, 29  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.2897777777778, 26.792305555555561, 32,  // Point 1
+                            128.96127777777781, 27.79741666666667, 29   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つre伊湯岳
+            {
+                "id": "re伊湯岳 ",
+                "name": "Okinawa re伊湯岳",
+                "position": {
+                    "cartographicDegrees": [128.20636111111111, 26.689694444444449, 15]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.20636111111111, 26.689694444444449, 0,  // 地面 (GL)
+                            128.20636111111111, 26.689694444444449, 15  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ新川(福地)　
+            {
+                "id": "新川(福地) ",
+                "name": " Okinawa 新川(福地) ",
+                "position": {
+                    "cartographicDegrees": [128.24416666666659, 26.679833333333331, 23.399999999999999]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.24416666666659, 26.679833333333331, 0,  // 地面 (GL)
+                            128.24416666666659, 26.679833333333331, 23.399999999999999  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.20636111111111, 26.689694444444449, 15,  // Point1
+                            128.24416666666659, 26.679833333333331, 23.399999999999999   // Point 2　
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つre大保
+            {
+                "id": "re大保 ",
+                "name": "Okinawa re大保",
+                "position": {
+                    "cartographicDegrees": [128.1491388888889, 26.654361111111111, 15]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.1491388888889, 26.654361111111111, 0,  // 地面 (GL)
+                            128.1491388888889, 26.654361111111111, 15  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ多野岳(大保)　
+            {
+                "id": "多野岳(大保) ",
+                "name": " Okinawa 多野岳(大保) ",
+                "position": {
+                    "cartographicDegrees": [128.0454722222222, 26.601416666666669, 34]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.0454722222222, 26.601416666666669, 0,  // 地面 (GL)
+                            128.0454722222222, 26.601416666666669, 34  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.1491388888889, 26.654361111111111, 15,  // Point 1
+                            128.0454722222222, 26.601416666666669, 34   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ大里(与那原)
+            {
+                "id": "大里(与那原) ",
+                "name": "Okinawa 大里(与那原)",
+                "position": {
+                    "cartographicDegrees": [127.7596666666667, 26.170500000000001, 24.5]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.7596666666667, 26.170500000000001, 0,  // 地面 (GL)
+                            127.7596666666667, 26.170500000000001, 24.5  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ与那原(大里)　
+            {
+                "id": "与那原(大里) ",
+                "name": " Okinawa 与那原(大里) ",
+                "position": {
+                    "cartographicDegrees": [127.7517222222222, 26.200749999999999, 37.5]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            127.7517222222222, 26.200749999999999, 0,  // 地面 (GL)
+                            127.7517222222222, 26.200749999999999, 37.5  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.7596666666667, 26.170500000000001, 24.5,  // Point 1
+                            127.7517222222222, 26.200749999999999, 37.5   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つre辺野喜
+            {
+                "id": "re辺野喜 ",
+                "name": "Okinawa re辺野喜",
+                "position": {
+                    "cartographicDegrees": [128.25513888888889, 26.783555555555559, 15]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.25513888888889, 26.783555555555559, 0,  // 地面 (GL)
+                            128.25513888888889, 26.783555555555559, 15  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ西銘岳(辺野喜)　
+            {
+                "id": "西銘岳(辺野喜) ",
+                "name": " Okinawa 西銘岳(辺野喜) ",
+                "position": {
+                    "cartographicDegrees": [128.2897777777778, 26.792305555555561, 19]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.2897777777778, 26.792305555555561, 0,  // 地面 (GL)
+                            128.2897777777778, 26.792305555555561, 19  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.25513888888889, 26.783555555555559, 15,  // Point 1
+                            128.2897777777778, 26.792305555555561, 19   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ大保(多野岳)
+            {
+                "id": "大保(多野岳) ",
+                "name": "Okinawa 大保(多野岳)",
+                "position": {
+                    "cartographicDegrees": [128.14641666666671, 26.650111111111109, 20]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.14641666666671, 26.650111111111109, 0,  // 地面 (GL)
+                            128.14641666666671, 26.650111111111109, 20  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つre大保　
+            {
+                "id": "re大保 ",
+                "name": " Okinawa re大保 ",
+                "position": {
+                    "cartographicDegrees": [128.1491388888889, 26.654361111111111, 15]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.1491388888889, 26.654361111111111, 0,  // 地面 (GL)
+                            128.1491388888889, 26.654361111111111, 15  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.14641666666671, 26.650111111111109, 20,  // Point1
+                            128.1491388888889, 26.654361111111111, 15   // Point 2　
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つre東福地
+            {
+                "id": "re東福地 ",
+                "name": "Okinawa re東福地",
+                "position": {
+                    "cartographicDegrees": [128.1785555555555, 26.645833333333329, 15]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.1785555555555, 26.645833333333329, 0,  // 地面 (GL)
+                            128.1785555555555, 26.645833333333329, 15  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ多野岳(福地)　
+            {
+                "id": "多野岳(福地) ",
+                "name": " Okinawa 多野岳(福地) ",
+                "position": {
+                    "cartographicDegrees": [128.0454722222222, 26.601416666666669, 29]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.0454722222222, 26.601416666666669, 0,  // 地面 (GL)
+                            128.0454722222222, 26.601416666666669, 29  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.1785555555555, 26.645833333333329, 15,  // Point 1
+                            128.0454722222222, 26.601416666666669, 29   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ勝連(大里)
+            {
+                "id": "勝連(大里) ",
+                "name": "Okinawa 勝連(大里)",
+                "position": {
+                    "cartographicDegrees": [127.88549999999999, 26.322805555555551, 30]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.88549999999999, 26.322805555555551, 0,  // 地面 (GL)
+                            127.88549999999999, 26.322805555555551, 30  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ大里(勝連)　
+            {
+                "id": "大里(勝連) ",
+                "name": " Okinawa 大里(勝連) ",
+                "position": {
+                    "cartographicDegrees": [127.7596666666667, 26.170500000000001, 45]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            127.7596666666667, 26.170500000000001, 0,  // 地面 (GL)
+                            127.7596666666667, 26.170500000000001, 45  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.88549999999999, 26.322805555555551, 30,  // Point 1
+                            127.7596666666667, 26.170500000000001, 45   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つre普久川
+            {
+                "id": "re普久川 ",
+                "name": "Okinawa re普久川",
+                "position": {
+                    "cartographicDegrees": [128.27466666666669, 26.74538888888889, 15]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.27466666666669, 26.74538888888889, 0,  // 地面 (GL)
+                            128.27466666666669, 26.74538888888889, 15  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ西銘岳(普久川)　
+            {
+                "id": "西銘岳(普久川) ",
+                "name": " Okinawa 西銘岳(普久川) ",
+                "position": {
+                    "cartographicDegrees": [128.2897777777778, 26.792305555555561, 19]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.2897777777778, 26.792305555555561, 0,  // 地面 (GL)
+                            128.2897777777778, 26.792305555555561, 19  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.27466666666669, 26.74538888888889, 15,  // Point 1
+                            128.2897777777778, 26.792305555555561, 19   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ福地(新川)
+            {
+                "id": "福地(新川) ",
+                "name": "Okinawa 福地(新川)",
+                "position": {
+                    "cartographicDegrees": [128.1757777777778, 26.647555555555559, 7]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.1757777777778, 26.647555555555559, 0,  // 地面 (GL)
+                            128.1757777777778, 26.647555555555559, 7  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つre福地　
+            {
+                "id": "re福地 ",
+                "name": " Okinawa re福地 ",
+                "position": {
+                    "cartographicDegrees": [128.17263888888891, 26.649583333333329, 15]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.17263888888891, 26.649583333333329, 0,  // 地面 (GL)
+                            128.17263888888891, 26.649583333333329, 15  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.1757777777778, 26.647555555555559, 7,  // Point1
+                            128.17263888888891, 26.649583333333329, 15   // Point 2　
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ羽地(多野岳)
+            {
+                "id": "羽地(多野岳) ",
+                "name": "Okinawa 羽地(多野岳)",
+                "position": {
+                    "cartographicDegrees": [128.02102777777779, 26.606000000000002, 19.199999999999999]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.02102777777779, 26.606000000000002, 0,  // 地面 (GL)
+                            128.02102777777779, 26.606000000000002, 19.199999999999999  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ多野岳(羽地)　
+            {
+                "id": "多野岳(羽地) ",
+                "name": " Okinawa 多野岳(羽地) ",
+                "position": {
+                    "cartographicDegrees": [128.0454722222222, 26.601416666666669, 24]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.0454722222222, 26.601416666666669, 0,  // 地面 (GL)
+                            128.0454722222222, 26.601416666666669, 24  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.02102777777779, 26.606000000000002, 19.199999999999999,  // Point 1
+                            128.0454722222222, 26.601416666666669, 24   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ那覇(大里)
+            {
+                "id": "那覇(大里) ",
+                "name": "Okinawa 那覇(大里)",
+                "position": {
+                    "cartographicDegrees": [127.6908333333333, 26.227722222222219, 58.5]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.6908333333333, 26.227722222222219, 0,  // 地面 (GL)
+                            127.6908333333333, 26.227722222222219, 58.5  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ大里(那覇)　
+            {
+                "id": "大里(那覇) ",
+                "name": " Okinawa 大里(那覇) ",
+                "position": {
+                    "cartographicDegrees": [127.7596666666667, 26.170500000000001, 54]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            127.7596666666667, 26.170500000000001, 0,  // 地面 (GL)
+                            127.7596666666667, 26.170500000000001, 54  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.6908333333333, 26.227722222222219, 58.5,  // Point 1
+                            127.7596666666667, 26.170500000000001, 54   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ辺野喜(西銘岳)
+            {
+                "id": "辺野喜(西銘岳) ",
+                "name": "Okinawa 辺野喜(西銘岳)",
+                "position": {
+                    "cartographicDegrees": [128.2585277777778, 26.788138888888891, 15.4]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.2585277777778, 26.788138888888891, 0,  // 地面 (GL)
+                            128.2585277777778, 26.788138888888891, 15.4  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つre辺野喜　
+            {
+                "id": "re辺野喜 ",
+                "name": " Okinawa re辺野喜 ",
+                "position": {
+                    "cartographicDegrees": [128.25513888888889, 26.783555555555559, 15]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.25513888888889, 26.783555555555559, 0,  // 地面 (GL)
+                            128.25513888888889, 26.783555555555559, 15  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.2585277777778, 26.788138888888891, 15.4,  // Point 1
+                            128.25513888888889, 26.783555555555559, 15   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ勝連(多野岳)
+            {
+                "id": "勝連(多野岳) ",
+                "name": "Okinawa 勝連(多野岳)",
+                "position": {
+                    "cartographicDegrees": [127.88549999999999, 26.322805555555551, 30]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.88549999999999, 26.322805555555551, 0,  // 地面 (GL)
+                            127.88549999999999, 26.322805555555551, 30  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ多野岳(勝連)　
+            {
+                "id": "多野岳(勝連) ",
+                "name": " Okinawa 多野岳(勝連) ",
+                "position": {
+                    "cartographicDegrees": [128.0454722222222, 26.601416666666669, 34]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.0454722222222, 26.601416666666669, 0,  // 地面 (GL)
+                            128.0454722222222, 26.601416666666669, 34  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.88549999999999, 26.322805555555551, 30,  // Point1
+                            128.0454722222222, 26.601416666666669, 34   // Point 2　
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ大北(八重岳)
+            {
+                "id": "大北(八重岳) ",
+                "name": "Okinawa 大北(八重岳)",
+                "position": {
+                    "cartographicDegrees": [127.9870277777778, 26.607472222222221, 30.199999999999999]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.9870277777778, 26.607472222222221, 0,  // 地面 (GL)
+                            127.9870277777778, 26.607472222222221, 30.199999999999999  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つre名護　
+            {
+                "id": "re名護 ",
+                "name": " Okinawa re名護 ",
+                "position": {
+                    "cartographicDegrees": [127.9951388888889, 26.59011111111111, 15]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            127.9951388888889, 26.59011111111111, 0,  // 地面 (GL)
+                            127.9951388888889, 26.59011111111111, 15  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.9870277777778, 26.607472222222221, 30.199999999999999,  // Point 1
+                            127.9951388888889, 26.59011111111111, 15   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ大里(与座)
+            {
+                "id": "大里(与座) ",
+                "name": "Okinawa 大里(与座)",
+                "position": {
+                    "cartographicDegrees": [127.7596666666667, 26.170500000000001, 45]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.7596666666667, 26.170500000000001, 0,  // 地面 (GL)
+                            127.7596666666667, 26.170500000000001, 45  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ与座(大里)　
+            {
+                "id": "与座(大里) ",
+                "name": " Okinawa 与座(大里) ",
+                "position": {
+                    "cartographicDegrees": [127.7253888888889, 26.123249999999999, 43]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            127.7253888888889, 26.123249999999999, 0,  // 地面 (GL)
+                            127.7253888888889, 26.123249999999999, 43  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            127.7596666666667, 26.170500000000001, 45,  // Point 1
+                            127.7253888888889, 26.123249999999999, 43   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+            // 高さを持つ普久川(国頭)
+            {
+                "id": "普久川(国頭) ",
+                "name": "Okinawa 普久川(国頭)",
+                "position": {
+                    "cartographicDegrees": [128.28025, 26.74283333333333, 15.5]  // 高度100mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 1へのライン
+            {
+                "id": "line1",
+                "name": "Line from Ground to Point 1",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.28025, 26.74283333333333, 0,  // 地面 (GL)
+                            128.28025, 26.74283333333333, 15.5  // 高度100mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // 高さを持つ国頭(普久川)　
+            {
+                "id": "国頭(普久川) ",
+                "name": " Okinawa 国頭(普久川) ",
+                "position": {
+                    "cartographicDegrees": [128.24324999999999, 26.752111111111109, 20]  // 高度150mの位置
+                },
+                "point": {
+                    "color": {
+                        "rgba": [255, 0, 0, 255]
+                    },
+                    "pixelSize": 10
+                }
+            },
+            // GLからPoint 2へのライン
+            {
+                "id": "line2",
+                "name": "Line from Ground to Point 2",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [                        
+                            128.24324999999999, 26.752111111111109, 0,  // 地面 (GL)
+                            128.24324999999999, 26.752111111111109, 20  // 高度150mの位置
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 0, 0, 255]
+                            }
+                        }
+                    },
+                    "width": 2
+                }
+            },
+            // Point 1 と Point 2を結ぶオレンジ色のライン
+            {
+                "id": "line3",
+                "name": "Orange Line between Points",
+                "polyline": {
+                    "positions": {
+                        "cartographicDegrees": [
+                            128.28025, 26.74283333333333, 15.5,  // Point 1
+                            128.24324999999999, 26.752111111111109, 20   // Point 2
+                        ]
+                    },
+                    "material": {
+                        "solidColor": {
+                            "color": {
+                                "rgba": [255, 165, 0, 255]  // オレンジ色
+                            }
+                        }
+                    },
+                    "width": 5
+                }
+            },
+////////////////////////////////////////////////////////////////////////
+            // 3D 安波ダム　
+            {
+                "id": "安波ダム",
+                "name": "Okinawa 安波ダム",
+                "position": {
+                    "cartographicDegrees": [128.26872222222221, 26.70952777777778, 500]  // 高度100mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/安波ダム.glb",  // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 0,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 川上　
+            {
+                "id": "川上",
+                "name": " Okinawa 川上",
+                "position": {
+                    "cartographicDegrees": [128.01933333333329, 26.615916666666671, 500]  // 高度100mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/川上.glb",  // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 0,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 羽地ダム　
+            {
+                "id": "羽地ダム",
+                "name": "Okinawa 羽地ダム",
+                "position": {
+                    "cartographicDegrees": [128.02102777777779, 26.606000000000002, 500]  // 高度100mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/羽地ダム.glb",  // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 0,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 八重岳　
+            {
+                "id": "八重岳",
+                "name": " Okinawa 八重岳",
+                "position": {
+                    "cartographicDegrees": [127.92749999999999, 26.633833333333332, 500]  // 高度100mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/八重岳.glb",  // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 0,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 屋久島　
+            {
+                "id": "屋久島",
+                "name": "Okinawa 屋久島",
+                "position": {
+                    "cartographicDegrees": [130.39891666666671, 30.37522222222222, 800]  // 高度100mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/屋久島.glb",  // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 0,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 普久川　
+            {
+                "id": "普久川",
+                "name": " Okinawa 普久川",
+                "position": {
+                    "cartographicDegrees": [128.28025, 26.74283333333333, 500]  // 高度100mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/普久川.glb",  // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 0,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 屋敷平　
+            {
+                "id": "屋敷平",
+                "name": "Okinawa 屋敷平",
+                "position": {
+                    "cartographicDegrees": [130.37325000000001, 31.32191666666667, 500]  // 高度100mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/屋敷平.glb",  // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 0,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 福地ダム　
+            {
+                "id": "福地ダム",
+                "name": " Okinawa 福地ダム",
+                "position": {
+                    "cartographicDegrees": [128.1757777777778, 26.647555555555559, 500]  // 高度100mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/福地ダム.glb",  // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 0,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 嘉手納　
+            {
+                "id": "嘉手納",
+                "name": "Okinawa 嘉手納",
+                "position": {
+                    "cartographicDegrees": [127.7475833333333, 26.330777777777779, 500]  // 高度100mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/嘉手納.glb",  // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 0,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 辺野喜　
+            {
+                "id": "辺野喜",
+                "name": " Okinawa 辺野喜",
+                "position": {
+                    "cartographicDegrees": [128.2585277777778, 26.788138888888891, 500]  // 高度100mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/辺野喜.glb",  // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 0,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 漢那ダム　
+            {
+                "id": "漢那ダム",
+                "name": "Okinawa 漢那ダム",
+                "position": {
+                    "cartographicDegrees": [127.9510555555556, 26.483666666666672, 500]  // 高度100mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/漢那ダム.glb",  // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 0,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 名護　
+            {
+                "id": "名護",
+                "name": " Okinawa 名護",
+                "position": {
+                    "cartographicDegrees": [127.9984722222222, 26.603305555555561, 500]  // 高度100mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/名護.glb",  // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 0,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 国頭　
+            {
+                "id": "国頭",
+                "name": "Okinawa 国頭",
+                "position": {
+                    "cartographicDegrees": [128.24324999999999, 26.752111111111109, 700]  // 高度100mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/国頭.glb",  // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 0,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 与座　
+            {
+                "id": "与座",
+                "name": " Okinawa 与座",
+                "position": {
+                    "cartographicDegrees": [127.7253888888889, 26.123249999999999, 500]  // 高度100mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/与座.glb",  // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 0,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 新川ダム　
+            {
+                "id": "新川ダム",
+                "name": "Okinawa 新川ダム",
+                "position": {
+                    "cartographicDegrees": [128.24416666666659, 26.679833333333331, 500]  // 高度100mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/新川ダム.glb",  // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 0,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            }
+        ];
+////////////////////////////////////////////////////////////////////////
+
+        // CZMLデータをCesiumに追加
+        const czmlDataSource = new Cesium.CzmlDataSource();
+        czmlDataSource.load(czmlData);
+        viewer.dataSources.add(czmlDataSource);
+
+        // カメラを最初のモデルにズーム　屋久島にズーム
+        viewer.zoomTo(czmlDataSource).then(function() {
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(130.3989167, 30.37522222, 300),
+                orientation: {
+                    heading: Cesium.Math.toRadians(0),
+                    pitch: Cesium.Math.toRadians(-45),
+                    roll: 0.0
+                }
+            });
+        });
+
+        // 地形に対する深度テストを有効にしてモデルが地面に隠れないようにする
+        viewer.scene.globe.depthTestAgainstTerrain = true;
+        //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/alldata_yashiki_yaku.html
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
