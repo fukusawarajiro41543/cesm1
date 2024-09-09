@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CesiumJS Tour Example</title>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.93/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.93/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <style>
+        html, body, #cesiumContainer {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="cesiumContainer"></div>
+    <script>
+        // Cesium Ionトークンの設定
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE'; // ここにあなたのトークンを設定
+
+
+        var viewer = new Cesium.Viewer('cesiumContainer');
+
+        // 出発地点（東京駅）
+        var startPoint = Cesium.Cartesian3.fromDegrees(139.7670, 35.6814, 100.0); // 緯度, 経度, 高度（100m）
+
+        // 到着地点（羽田空港）
+        var endPoint = Cesium.Cartesian3.fromDegrees(139.7845, 35.5494, 100.0);
+
+        // 移動にかかる時間（秒）
+        var flightDuration = 10;
+
+        // カメラを出発地点に移動してから飛行を開始
+        viewer.camera.flyTo({
+            destination: startPoint,
+            orientation: {
+                heading: viewer.camera.heading, // カメラの向きを現在の進行方向に保持
+                pitch: Cesium.Math.toRadians(-30), // 下方向に30度傾ける
+                roll: 0.0
+            },
+            complete: function () {
+                // 出発地点から到着地点まで飛行させる
+                var startTime = viewer.clock.currentTime;
+                viewer.clock.onTick.addEventListener(function () {
+                    var currentTime = viewer.clock.currentTime;
+                    var elapsedSeconds = Cesium.JulianDate.secondsDifference(currentTime, startTime);
+                    
+                    if (elapsedSeconds < flightDuration) {
+                        var fraction = elapsedSeconds / flightDuration;
+                        
+                        // 出発地点から到着地点まで直線補間
+                        var newPosition = Cesium.Cartesian3.lerp(startPoint, endPoint, fraction, new Cesium.Cartesian3());
+                        
+                        // 進行方向の向きを計算
+                        var direction = Cesium.Cartesian3.subtract(endPoint, startPoint, new Cesium.Cartesian3());
+                        Cesium.Cartesian3.normalize(direction, direction);
+                        var heading = Cesium.Math.toDegrees(Cesium.Math.atan2(direction.y, direction.x));
+
+                        // カメラを移動しながら向きを進行方向に保つ
+                        viewer.camera.setView({
+                            destination: newPosition,
+                            orientation: {
+                                heading: Cesium.Math.toRadians(heading), // 進行方向に向ける
+                                pitch: Cesium.Math.toRadians(-30), // 下方向30度
+                                roll: 0.0
+                            }
+                        });
+                    } else {
+                        viewer.clock.onTick.removeEventListener(arguments.callee); // 飛行完了後、イベントを解除
+                    }
+                });
+            }
+        });
+
+       //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/直線移動Tour.html
+    </script>
+</body>
+</html>
+
