@@ -18,14 +18,14 @@
 <body>
   <div id="cesiumContainer"></div>
   <script>
-        // Cesium Ionトークンの設定
-        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE'; // ここにあなたのトークンを設定
+    // Cesium Ionトークンの設定
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE'; // ここにあなたのトークンを設定
 
     // Cesium Viewerを初期化　　↓ これ以外ではpoint、Lineが地形に沈み込んでいた！
     const viewer = new Cesium.Viewer('cesiumContainer');
 
     // 外部のCZMLファイルを読み込む
-    Cesium.CzmlDataSource.load('lines.czml')
+    Cesium.CzmlDataSource.load('combined_output.czml')
       .then(function(dataSource) {
         viewer.dataSources.add(dataSource);
       })
@@ -34,11 +34,12 @@
       });
 
       // 同じフォルダ内のCZMLファイルをロード
-        var czmlDataSource = new Cesium.CzmlDataSource();
+      var czmlDataSource = new Cesium.CzmlDataSource();
         czmlDataSource.load('沖縄局名_10points.czml').then(function(dataSource) {
             viewer.dataSources.add(dataSource);
             viewer.zoomTo(dataSource); // すべてのポイントにズーム
           });
+
 
         // CZMLデータをJavaScript内に組み込む
         //const czmlData = [  ←　3Dモデルが表示できなかった！
@@ -48,121 +49,53 @@
                 "name": "CZML with Points, Lines, and 3D Models",
                 "version": "1.0"
             },
-            // 3D 安波ダム
+            // 3D 嘉手納
             {
-                "id": "安波ダム",
-                "name": "Okinawa 安波ダム",
+                "id": "嘉手納",
+                "name": " Okinawa 嘉手納",
                 "position": {
-                    "cartographicDegrees": [128.26872, 26.709527, 1]  // 高度100mの位置
+                    "cartographicDegrees": [127.747623, 26.330779, 1]    // 高度1mの位置
                 },
                 "model": {
-                    "gltf": "./3D_data/安波ダム.glb",  // 3Dモデルのパス
+                    "gltf": "./3D_data/嘉手納.glb",   // 3Dモデルのパス
                     "scale": 1,
                     "minimumPixelSize": 100,
                     "maximumScale": 1,
-                    "heading": 0,
+                    "heading": 339.55,
                     "pitch": 0,
                     "roll": 0
                 }
             },
-            // 3D 川上
+            // 3D 与座局
             {
-                "id": "川上",
-                "name": " Okinawa 川上",
+                "id": "与座局",
+                "name": " Okinawa 与座局",
                 "position": {
-                    "cartographicDegrees": [128.0193, 26.6159, 1]  // 高度100mの位置
+                    "cartographicDegrees": [127.725405, 26.123271, 1]    // 高度1mの位置
                 },
                 "model": {
-                    "gltf": "./3D_data/川上.glb",  // 3Dモデルのパス
+                    "gltf": "./3D_data/与座局.glb",   // 3Dモデルのパス
                     "scale": 1,
                     "minimumPixelSize": 100,
                     "maximumScale": 1,
-                    "heading": 0,
+                    "heading": 103.89,
                     "pitch": 0,
                     "roll": 0
                 }
             },
-            // 3D 羽地ダム
+            // 3D 国頭局
             {
-                "id": "羽地ダム",
-                "name": "Okinawa 羽地ダム",
+                "id": "国頭局",
+                "name": " Okinawa 国頭局",
                 "position": {
-                    "cartographicDegrees": [128.0210, 26.6060, 1]  // 高度100mの位置
+                    "cartographicDegrees": [128.243197, 26.752149, 1]    // 高度1mの位置
                 },
                 "model": {
-                    "gltf": "./3D_data/羽地ダム.glb",  // 3Dモデルのパス
+                    "gltf": "./3D_data/国頭局.glb",   // 3Dモデルのパス
                     "scale": 1,
                     "minimumPixelSize": 100,
                     "maximumScale": 1,
-                    "heading": 0,
-                    "pitch": 0,
-                    "roll": 0
-                }
-            },
-            // 3D 八重岳
-            {
-                "id": "八重岳",
-                "name": " Okinawa 八重岳",
-                "position": {
-                    "cartographicDegrees": [127.92749, 26.6338, 1]  // 高度100mの位置
-                },
-                "model": {
-                    "gltf": "./3D_data/八重岳.glb",  // 3Dモデルのパス
-                    "scale": 1,
-                    "minimumPixelSize": 100,
-                    "maximumScale": 1,
-                    "heading": 0,
-                    "pitch": 0,
-                    "roll": 0
-                }
-            },
-            // 3D 屋久島
-            {
-                "id": "屋久島",
-                "name": "Okinawa 屋久島",
-                "position": {
-                    "cartographicDegrees": [130.3989, 30.3752, 1]  // 高度100mの位置
-                },
-                "model": {
-                    "gltf": "./3D_data/屋久島.glb",  // 3Dモデルのパス
-                    "scale": 1,
-                    "minimumPixelSize": 100,
-                    "maximumScale": 1,
-                    "heading": 0,
-                    "pitch": 0,
-                    "roll": 0
-                }
-            },
-            // 3D 普久川
-            {
-                "id": "普久川",
-                "name": " Okinawa 普久川",
-                "position": {
-                    "cartographicDegrees": [128.28025, 26.7428, 1]  // 高度100mの位置
-                },
-                "model": {
-                    "gltf": "./3D_data/普久川.glb",  // 3Dモデルのパス
-                    "scale": 1,
-                    "minimumPixelSize": 100,
-                    "maximumScale": 1,
-                    "heading": 0,
-                    "pitch": 0,
-                    "roll": 0
-                }
-            },
-            // 3D 屋敷平
-            {
-                "id": "屋敷平",
-                "name": "Okinawa 屋敷平",
-                "position": {
-                    "cartographicDegrees": [130.37325, 31.321916, 1]  // 高度100mの位置
-                },
-                "model": {
-                    "gltf": "./3D_data/屋敷平.glb",  // 3Dモデルのパス
-                    "scale": 1,
-                    "minimumPixelSize": 100,
-                    "maximumScale": 1,
-                    "heading": 0,
+                    "heading": 176.5,
                     "pitch": 0,
                     "roll": 0
                 }
@@ -172,65 +105,31 @@
                 "id": "福地ダム",
                 "name": " Okinawa 福地ダム",
                 "position": {
-                    "cartographicDegrees": [128.1757, 26.6475, 1]  // 高度100mの位置
+                    "cartographicDegrees": [128.175788, 26.647563, 1]    // 高度1mの位置
                 },
                 "model": {
-                    "gltf": "./3D_data/福地ダム.glb",  // 3Dモデルのパス
+                    "gltf": "./3D_data/福地ダム.glb",   // 3Dモデルのパス
                     "scale": 1,
                     "minimumPixelSize": 100,
                     "maximumScale": 1,
-                    "heading": 0,
+                    "heading": 47.04,
                     "pitch": 0,
                     "roll": 0
                 }
             },
-            // 3D 嘉手納
+            // 3D 安波ダム
             {
-                "id": "嘉手納",
-                "name": "Okinawa 嘉手納",
+                "id": "安波ダム",
+                "name": " Okinawa 安波ダム",
                 "position": {
-                    "cartographicDegrees": [127.747583, 26.3307, 1]  // 高度100mの位置
+                    "cartographicDegrees": [128.268707, 26.709547, 1]    // 高度1mの位置
                 },
                 "model": {
-                    "gltf": "./3D_data/嘉手納.glb",  // 3Dモデルのパス
+                    "gltf": "./3D_data/安波ダム.glb",   // 3Dモデルのパス
                     "scale": 1,
                     "minimumPixelSize": 100,
                     "maximumScale": 1,
-                    "heading": 0,
-                    "pitch": 0,
-                    "roll": 0
-                }
-            },
-            // 3D 辺野喜
-            {
-                "id": "辺野喜",
-                "name": " Okinawa 辺野喜",
-                "position": {
-                    "cartographicDegrees": [128.258527, 26.788138, 1]  // 高度100mの位置
-                },
-                "model": {
-                    "gltf": "./3D_data/辺野喜.glb",  // 3Dモデルのパス
-                    "scale": 1,
-                    "minimumPixelSize": 100,
-                    "maximumScale": 1,
-                    "heading": 0,
-                    "pitch": 0,
-                    "roll": 0
-                }
-            },
-            // 3D 漢那ダム
-            {
-                "id": "漢那ダム",
-                "name": "Okinawa 漢那ダム",
-                "position": {
-                    "cartographicDegrees": [127.951055, 26.4836, 1]  // 高度100mの位置
-                },
-                "model": {
-                    "gltf": "./3D_data/漢那ダム.glb",  // 3Dモデルのパス
-                    "scale": 1,
-                    "minimumPixelSize": 100,
-                    "maximumScale": 1,
-                    "heading": 0,
+                    "heading": 305.5,
                     "pitch": 0,
                     "roll": 0
                 }
@@ -240,48 +139,99 @@
                 "id": "名護",
                 "name": " Okinawa 名護",
                 "position": {
-                    "cartographicDegrees": [127.998472, 26.603305, 1]  // 高度100mの位置
+                    "cartographicDegrees": [127.998555, 26.603336, 1]    // 高度1mの位置
                 },
                 "model": {
-                    "gltf": "./3D_data/名護.glb",  // 3Dモデルのパス
+                    "gltf": "./3D_data/名護.glb",   // 3Dモデルのパス
                     "scale": 1,
                     "minimumPixelSize": 100,
                     "maximumScale": 1,
-                    "heading": 0,
+                    "heading": 34,
                     "pitch": 0,
                     "roll": 0
                 }
             },
-            // 3D 国頭
+            // 3D 屋敷平
             {
-                "id": "国頭局",
-                "name": "Okinawa 国頭局",
+                "id": "屋敷平",
+                "name": " Okinawa 屋敷平",
                 "position": {
-                    "cartographicDegrees": [128.243249, 26.7521, 1]  // 高度100mの位置
+                    "cartographicDegrees": [130.373264, 31.32192, 1]    // 高度1mの位置
                 },
                 "model": {
-                    "gltf": "./3D_data/国頭局.glb",  // 3Dモデルのパス
+                    "gltf": "./3D_data/屋敷平.glb",   // 3Dモデルのパス
                     "scale": 1,
                     "minimumPixelSize": 100,
                     "maximumScale": 1,
-                    "heading": 0,
+                    "heading": 18,
                     "pitch": 0,
                     "roll": 0
                 }
             },
-            // 3D 与座
+            // 3D 屋久島
             {
-                "id": "与座局",
-                "name": " Okinawa 与座局",
+                "id": "屋久島",
+                "name": " Okinawa 屋久島",
                 "position": {
-                    "cartographicDegrees": [127.72538, 26.123249, 1]  // 高度100mの位置
+                    "cartographicDegrees": [130.398924, 30.375238, 1]    // 高度1mの位置
                 },
                 "model": {
-                    "gltf": "./3D_data/与座局.glb",  // 3Dモデルのパス
+                    "gltf": "./3D_data/屋久島.glb",   // 3Dモデルのパス
                     "scale": 1,
                     "minimumPixelSize": 100,
                     "maximumScale": 1,
-                    "heading": 0,
+                    "heading": 347,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 八重岳
+            {
+                "id": "八重岳",
+                "name": " Okinawa 八重岳",
+                "position": {
+                    "cartographicDegrees": [127.927528, 26.633885, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/八重岳.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 20,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 普久川
+            {
+                "id": "普久川",
+                "name": " Okinawa 普久川",
+                "position": {
+                    "cartographicDegrees": [128.280198, 26.742871, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/普久川.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 298,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 羽地ダム
+            {
+                "id": "羽地ダム",
+                "name": " Okinawa 羽地ダム",
+                "position": {
+                    "cartographicDegrees": [128.02104, 26.606, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/羽地ダム.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 51,
                     "pitch": 0,
                     "roll": 0
                 }
@@ -289,16 +239,67 @@
             // 3D 新川ダム
             {
                 "id": "新川ダム",
-                "name": "Okinawa 新川ダム",
+                "name": " Okinawa 新川ダム",
                 "position": {
-                    "cartographicDegrees": [128.24416, 26.67983, 1]  // 高度100mの位置
+                    "cartographicDegrees": [128.244107, 26.679839, 1]    // 高度1mの位置
                 },
                 "model": {
-                    "gltf": "./3D_data/新川ダム.glb",  // 3Dモデルのパス
+                    "gltf": "./3D_data/新川ダム.glb",   // 3Dモデルのパス
                     "scale": 1,
                     "minimumPixelSize": 100,
                     "maximumScale": 1,
-                    "heading": 0,
+                    "heading": 156,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 辺野喜
+            {
+                "id": "辺野喜",
+                "name": " Okinawa 辺野喜",
+                "position": {
+                    "cartographicDegrees": [128.258556, 26.788124, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/辺野喜.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 300,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 川上
+            {
+                "id": "川上",
+                "name": " Okinawa 川上",
+                "position": {
+                    "cartographicDegrees": [128.019322, 26.615911, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/川上.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 52,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
+            // 3D 漢那ダム
+            {
+                "id": "漢那ダム",
+                "name": " Okinawa 漢那ダム",
+                "position": {
+                    "cartographicDegrees": [127.95107, 26.483699, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/漢那ダム.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 40,
                     "pitch": 0,
                     "roll": 0
                 }
@@ -331,7 +332,7 @@
       destination: Cesium.Cartesian3.fromDegrees(127.690875, 26.227792, 500000) // 高度を500kmに設定
     });
 
-    //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/Cesium_OkinawaTajyu.html
+    //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/2Cesium_OkinawaTajyu.html
   </script>
 </body>
 </html>
