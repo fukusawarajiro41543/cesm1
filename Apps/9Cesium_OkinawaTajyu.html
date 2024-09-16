@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Cesium CZML Line Example</title>
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.98/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.98/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <style>
+    #cesiumContainer {
+      width: 100%;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="cesiumContainer"></div>
+  <script>
+        // Cesium Ionトークンの設定
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE'; // ここにあなたのトークンを設定
+
+    // Cesium Viewerを初期化　　↓ これ以外ではpoint、Lineが地形に沈み込んでいた！
+    const viewer = new Cesium.Viewer('cesiumContainer');
+
+    // 外部のCZMLファイルを読み込む
+    Cesium.CzmlDataSource.load('combined_output.czml')
+      .then(function(dataSource) {
+        viewer.dataSources.add(dataSource);
+      })
+      .catch(function(error) {
+        console.error('CZMLの読み込みに失敗しました:', error);
+      });
+
+      // 同じフォルダ内のCZMLファイルをロード
+        var czmlDataSource = new Cesium.CzmlDataSource();
+        czmlDataSource.load('output.czml').then(function(dataSource) {
+            viewer.dataSources.add(dataSource);
+            viewer.zoomTo(dataSource); // すべてのポイントにズーム
+          });
+
+
+      // 同じフォルダ内のCZMLファイルをロード
+      var czmlDataSource = new Cesium.CzmlDataSource();
+        czmlDataSource.load('combined_3dmodel_output.czml').then(function(dataSource) {
+            viewer.dataSources.add(dataSource);
+            viewer.zoomTo(dataSource); // すべてのポイントにズーム
+          });
+
+
+        // 内部CZMLデータをCesiumに追加
+        const internalCzmlDataSource = new Cesium.CzmlDataSource();
+        internalCzmlDataSource.load(internalCzmlData);
+        viewer.dataSources.add(internalCzmlDataSource);
+
+        // 外部と内部の両方のデータソースを表示する
+        viewer.zoomTo([externalCzmlDataSource, internalCzmlDataSource]).then(function() {
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(128.24416, 26.67983, 500),
+                orientation: {
+                    heading: Cesium.Math.toRadians(0),
+                    pitch: Cesium.Math.toRadians(-45),
+                    roll: 0.0
+
+                }
+            });
+        });
+
+        // 地形に対する深度テストを有効にして、モデルが地形に隠れないようにする
+        viewer.scene.globe.depthTestAgainstTerrain = true;
+
+    // カメラを沖縄総合事務局周辺に設定
+    viewer.camera.setView({
+      destination: Cesium.Cartesian3.fromDegrees(127.690875, 26.227792, 500000) // 高度を500kmに設定
+    });
+
+    //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/9Cesium_OkinawaTajyu.html
+  </script>
+</body>
+</html>
