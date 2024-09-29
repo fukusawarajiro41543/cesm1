@@ -1,0 +1,703 @@
+[
+    {
+        "id": "document",
+        "version": "1.0"
+    },
+    {
+        "id": "line_1",
+        "name": "尾巡山(屋敷平)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [130.5283888888889,                    31.31808333333333,                    18,                    130.373264,                    31.32192,                    19]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_10",
+        "name": "辺野喜(西銘岳)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.258556,                    26.788124,                    15.4,                    128.2551388888889,                    26.78355555555556,                    15]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_11",
+        "name": "普久川(国頭)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.280198,                    26.742871,                    15.5,                    128.243197,                    26.752149,                    20]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_12",
+        "name": "普久川(西銘岳)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.280198,                    26.742871,                    20,                    128.2746666666667,                    26.74538888888889,                    15]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_13",
+        "name": "安波(新川)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.268707,                    26.709547,                    20,                    128.2707222222222,                    26.71183333333333,                    15]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_14",
+        "name": "国頭(安波)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.243197,                    26.752149,                    15,                    128.268707,                    26.709547,                    15.5]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_15",
+        "name": "re安波左岸",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.2707222222222,                    26.71183333333333,                    15,                    128.2436666666667,                    26.70227777777778,                    15]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_16",
+        "name": "re福地",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.1726388888889,                    26.64958333333333,                    15,                    128.2063611111111,                    26.68969444444445,                    15]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_17",
+        "name": "re排持山",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.2436666666667,                    26.70227777777778,                    15,                    128.244107,                    26.679839,                    23.4]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_18",
+        "name": "re伊湯岳",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.2063611111111,                    26.68969444444445,                    15,                    128.244107,                    26.679839,                    23.4]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_19",
+        "name": "大保(多野岳)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.1464166666667,                    26.65011111111111,                    20,                    128.1491388888889,                    26.65436111111111,                    15]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_2",
+        "name": "屋久島(屋敷平)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [130.398924,                    30.375238,                    53.5,                    130.373264,                    31.32192,                    30]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_20",
+        "name": "福地(新川)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.175788,                    26.647563,                    7,                    128.1726388888889,                    26.64958333333333,                    15]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_21",
+        "name": "福地(多野岳)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.175788,                    26.647563,                    7,                    128.1785555555555,                    26.64583333333333,                    15]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_22",
+        "name": "re名護",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.9951388888889,                    26.59011111111111,                    15,                    127.927528,                    26.633885,                    20.9]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_23",
+        "name": "羽地(川上)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.02104,                    26.606,                    19.2,                    128.019322,                    26.615911,                    33.5]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_24",
+        "name": "名護(川上)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.998555,                    26.603336,                    29.5,                    128.019322,                    26.615911,                    33.5]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_25",
+        "name": "大北(比井田原)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.9870277777778,                    26.60747222222222,                    25.2,                    127.9969444444445,                    26.60855555555556,                    13.9]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_26",
+        "name": "大北(名護)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.9870277777778,                    26.60747222222222,                    30.2,                    127.998555,                    26.603336,                    25]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_27",
+        "name": "re大保",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.1491388888889,                    26.65436111111111,                    15,                    128.0454722222222,                    26.60141666666667,                    34]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_28",
+        "name": "re東福地",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.1785555555555,                    26.64583333333333,                    15,                    128.0454722222222,                    26.60141666666667,                    29]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_29",
+        "name": "羽地(多野岳)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.02104,                    26.606,                    19.2,                    128.0454722222222,                    26.60141666666667,                    24]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_3",
+        "name": "中之島(屋久島)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [129.9126944444444,                    29.82366666666667,                    45.5,                    130.398924,                    30.375238,                    61.5]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_30",
+        "name": "勝連(多野岳)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.8855,                    26.32280555555555,                    30,                    128.0454722222222,                    26.60141666666667,                    34]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_31",
+        "name": "大北(八重岳)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.9870277777778,                    26.60747222222222,                    30.2,                    127.9951388888889,                    26.59011111111111,                    15]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_32",
+        "name": "八重岳(漢那)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.927528,                    26.633885,                    32.5,                    127.95107,                    26.483699,                    50.3]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_33",
+        "name": "漢那(金武)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.95107,                    26.483699,                    40,                    127.9338888888889,                    26.46783333333333,                    19.8]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_34",
+        "name": "漢那(石川)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.95107,                    26.483699,                    50.3,                    127.8046388888889,                    26.39305555555556,                    40]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_35",
+        "name": "那覇(嘉手納)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.6908333333333,                    26.22772222222222,                    58.5,                    127.747623,                    26.330779,                    29]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_36",
+        "name": "石川(安謝)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.8046388888889,                    26.39305555555556,                    29,                    127.6908333333333,                    26.22772222222222,                    58.5]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_37",
+        "name": "那覇(防災沖縄県)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.6908333333333,                    26.22772222222222,                    58.5,                    127.681434,                    26.212813,                    50]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_38",
+        "name": "大里(与那原)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.7596666666667,                    26.1705,                    24.5,                    127.7517222222222,                    26.20075,                    37.5]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_39",
+        "name": "勝連(大里)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.8855,                    26.32280555555555,                    30,                    127.7596666666667,                    26.1705,                    45]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_4",
+        "name": "悪石島(中之島)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [129.5954722222222,                    29.46494444444444,                    29,                    129.9126944444444,                    29.82366666666667,                    45.5]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_40",
+        "name": "那覇(大里)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.6908333333333,                    26.22772222222222,                    58.5,                    127.7596666666667,                    26.1705,                    54]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_41",
+        "name": "大里(与座)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [127.7596666666667,                    26.1705,                    45,                    127.725405,                    26.123271,                    43]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_5",
+        "name": "湯湾岳(悪石島)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [129.3311388888889,                    28.29836111111111,                    35.1,                    129.5954722222222,                    29.46494444444444,                    29]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_6",
+        "name": "湯湾岳(徳之島)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [129.3311388888889,                    28.29836111111111,                    35.1,                    128.9612777777778,                    27.79741666666667,                    29]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_7",
+        "name": "西銘岳(徳之島)",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.2897777777778,                    26.79230555555556,                    32,                    128.9612777777778,                    27.79741666666667,                    29]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_8",
+        "name": "re辺野喜",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.2551388888889,                    26.78355555555556,                    15,                    128.2897777777778,                    26.79230555555556,                    19]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "line_9",
+        "name": "re普久川",
+        "polyline": {
+            "positions": {
+                "cartographicDegrees": [128.2746666666667,                    26.74538888888889,                    15,                    128.2897777777778,                    26.79230555555556,                    19]
+            },
+            "width": 2,
+            "material": {
+                "solidColor": {
+                    "color": {
+                        "rgba": [255,                            0,                            0,                            255]
+                    }
+                }
+            }
+        }
+    }
+]

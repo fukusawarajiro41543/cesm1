@@ -1,0 +1,17 @@
+            // 3D 嘉手納
+            {
+                "id": "嘉手納",
+                "name": " Okinawa 嘉手納",
+                "position": {
+                    "cartographicDegrees": [127.747623, 26.330779, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/嘉手納.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 339.55,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },

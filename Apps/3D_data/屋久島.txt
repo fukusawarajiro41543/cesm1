@@ -1,0 +1,17 @@
+            // 3D 屋久島
+            {
+                "id": "屋久島",
+                "name": " Okinawa 屋久島",
+                "position": {
+                    "cartographicDegrees": [130.398924, 30.375238, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/屋久島.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 347,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },

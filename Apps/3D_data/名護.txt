@@ -1,0 +1,17 @@
+            // 3D 名護
+            {
+                "id": "名護",
+                "name": " Okinawa 名護",
+                "position": {
+                    "cartographicDegrees": [127.998555, 26.603336, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/名護.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 34,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },

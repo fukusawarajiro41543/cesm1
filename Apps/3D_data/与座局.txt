@@ -1,0 +1,17 @@
+            // 3D 与座局
+            {
+                "id": "与座局",
+                "name": " Okinawa 与座局",
+                "position": {
+                    "cartographicDegrees": [127.725405, 26.123271, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/与座局.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 103.89,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },

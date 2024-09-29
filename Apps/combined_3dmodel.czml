@@ -1,0 +1,125 @@
+[
+  {
+    "id": "document", "version": "1.0"
+  },
+  {
+    "id": "ang嘉手納", "name": "Okinawa ang嘉手納", "position": {
+      "cartographicDegrees": [    127.747623,     26.330779,     0.0
+      ]
+    }, "model": {
+      "gltf": "./3D_data/ang嘉手納.glb",   "scale": 1.0,   "minimumPixelSize": 100.0,   "maximumScale": 1.0,   "heading": 354.55,   "pitch": 0.0,   "roll": 0.0
+    }
+  },
+  {
+    "id": "ang与座局", "name": "Okinawa ang与座局", "position": {
+      "cartographicDegrees": [    127.725405,     26.123271,     0.0
+      ]
+    }, "model": {
+      "gltf": "./3D_data/ang与座局.glb",   "scale": 1.0,   "minimumPixelSize": 100.0,   "maximumScale": 1.0,   "heading": 118.89,   "pitch": 0.0,   "roll": 0.0
+    }
+  },
+  {
+    "id": "ang国頭局", "name": "Okinawa ang国頭局", "position": {
+      "cartographicDegrees": [    128.243197,     26.752149,     0.0
+      ]
+    }, "model": {
+      "gltf": "./3D_data/ang国頭局.glb",   "scale": 1.0,   "minimumPixelSize": 100.0,   "maximumScale": 1.0,   "heading": 191.5,   "pitch": 0.0,   "roll": 0.0
+    }
+  },
+  {
+    "id": "ang福地ダム", "name": "Okinawa ang福地ダム", "position": {
+      "cartographicDegrees": [    128.175788,     26.647563,     0.0
+      ]
+    }, "model": {
+      "gltf": "./3D_data/ang福地ダム.glb",   "scale": 1.0,   "minimumPixelSize": 100.0,   "maximumScale": 1.0,   "heading": 62.04,   "pitch": 0.0,   "roll": 0.0
+    }
+  },
+  {
+    "id": "ang安波ダム", "name": "Okinawa ang安波ダム", "position": {
+      "cartographicDegrees": [    128.268707,     26.709547,     0.0
+      ]
+    }, "model": {
+      "gltf": "./3D_data/ang安波ダム.glb",   "scale": 1.0,   "minimumPixelSize": 100.0,   "maximumScale": 1.0,   "heading": 35.0,   "pitch": 0.0,   "roll": 0.0
+    }
+  },
+  {
+    "id": "ang名護", "name": "Okinawa ang名護", "position": {
+      "cartographicDegrees": [    127.998555,     26.603336,     0.0
+      ]
+    }, "model": {
+      "gltf": "./3D_data/ang名護.glb",   "scale": 1.0,   "minimumPixelSize": 100.0,   "maximumScale": 1.0,   "heading": 49.0,   "pitch": 0.0,   "roll": 0.0
+    }
+  },
+  {
+    "id": "ang屋敷平", "name": "Okinawa ang屋敷平", "position": {
+      "cartographicDegrees": [    130.373264,     31.32192,     0.0
+      ]
+    }, "model": {
+      "gltf": "./3D_data/ang屋敷平.glb",   "scale": 1.0,   "minimumPixelSize": 100.0,   "maximumScale": 1.0,   "heading": 33.0,   "pitch": 0.0,   "roll": 0.0
+    }
+  },
+  {
+    "id": "ang屋久島", "name": "Okinawa ang屋久島", "position": {
+      "cartographicDegrees": [    130.398924,     30.375238,     0.0
+      ]
+    }, "model": {
+      "gltf": "./3D_data/ang屋久島.glb",   "scale": 1.0,   "minimumPixelSize": 100.0,   "maximumScale": 1.0,   "heading": 362.0,   "pitch": 0.0,   "roll": 0.0
+    }
+  },
+  {
+    "id": "ang八重岳", "name": "Okinawa ang八重岳", "position": {
+      "cartographicDegrees": [    127.927528,     26.633885,     0.0
+      ]
+    }, "model": {
+      "gltf": "./3D_data/ang八重岳.glb",   "scale": 1.0,   "minimumPixelSize": 100.0,   "maximumScale": 1.0,   "heading": 35.0,   "pitch": 0.0,   "roll": 0.0
+    }
+  },
+  {
+    "id": "ang普久川", "name": "Okinawa ang普久川", "position": {
+      "cartographicDegrees": [    128.280198,     26.742871,     0.0
+      ]
+    }, "model": {
+      "gltf": "./3D_data/ang普久川.glb",   "scale": 1.0,   "minimumPixelSize": 100.0,   "maximumScale": 1.0,   "heading": 313.0,   "pitch": 0.0,   "roll": 0.0
+    }
+  },
+  {
+    "id": "ang羽地ダム", "name": "Okinawa ang羽地ダム", "position": {
+      "cartographicDegrees": [    128.02104,     26.606,     0.0
+      ]
+    }, "model": {
+      "gltf": "./3D_data/ang羽地ダム.glb",   "scale": 1.0,   "minimumPixelSize": 100.0,   "maximumScale": 1.0,   "heading": 66.0,   "pitch": 0.0,   "roll": 0.0
+    }
+  },
+  {
+    "id": "ang新川ダム", "name": "Okinawa ang新川ダム", "position": {
+      "cartographicDegrees": [    128.244107,     26.679839,     0.0
+      ]
+    }, "model": {
+      "gltf": "./3D_data/ang新川ダム.glb",   "scale": 1.0,   "minimumPixelSize": 100.0,   "maximumScale": 1.0,   "heading": 171.0,   "pitch": 0.0,   "roll": 0.0
+    }
+  },
+  {
+    "id": "ang辺野喜", "name": "Okinawa ang辺野喜", "position": {
+      "cartographicDegrees": [    128.258556,     26.788124,     0.0
+      ]
+    }, "model": {
+      "gltf": "./3D_data/ang辺野喜.glb",   "scale": 1.0,   "minimumPixelSize": 100.0,   "maximumScale": 1.0,   "heading": 315.0,   "pitch": 0.0,   "roll": 0.0
+    }
+  },
+  {
+    "id": "ang川上", "name": "Okinawa ang川上", "position": {
+      "cartographicDegrees": [    128.019322,     26.615911,     0.0
+      ]
+    }, "model": {
+      "gltf": "./3D_data/ang川上.glb",   "scale": 1.0,   "minimumPixelSize": 100.0,   "maximumScale": 1.0,   "heading": 67.0,   "pitch": 0.0,   "roll": 0.0
+    }
+  },
+  {
+    "id": "ang漢那ダム", "name": "Okinawa ang漢那ダム", "position": {
+      "cartographicDegrees": [    127.95107,     26.483699,     0.0
+      ]
+    }, "model": {
+      "gltf": "./3D_data/ang漢那ダム.glb",   "scale": 1.0,   "minimumPixelSize": 100.0,   "maximumScale": 1.0,   "heading": 55.0,   "pitch": 0.0,   "roll": 0.0
+    }
+  }
+]

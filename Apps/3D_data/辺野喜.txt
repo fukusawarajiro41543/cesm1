@@ -1,0 +1,17 @@
+            // 3D 辺野喜
+            {
+                "id": "辺野喜",
+                "name": " Okinawa 辺野喜",
+                "position": {
+                    "cartographicDegrees": [128.258556, 26.788124, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/辺野喜.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 300,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },

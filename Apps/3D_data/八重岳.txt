@@ -1,0 +1,17 @@
+            // 3D 八重岳
+            {
+                "id": "八重岳",
+                "name": " Okinawa 八重岳",
+                "position": {
+                    "cartographicDegrees": [127.927528, 26.633885, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/八重岳.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 20,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },

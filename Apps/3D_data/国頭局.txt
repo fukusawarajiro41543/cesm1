@@ -1,0 +1,17 @@
+            // 3D 国頭局
+            {
+                "id": "国頭局",
+                "name": " Okinawa 国頭局",
+                "position": {
+                    "cartographicDegrees": [128.243197, 26.752149, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/国頭局.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 176.5,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },

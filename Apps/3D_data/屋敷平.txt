@@ -1,0 +1,17 @@
+            // 3D 屋敷平
+            {
+                "id": "屋敷平",
+                "name": " Okinawa 屋敷平",
+                "position": {
+                    "cartographicDegrees": [130.373264, 31.32192, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/屋敷平.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 18,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },

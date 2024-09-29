@@ -1,0 +1,17 @@
+            // 3D 普久川
+            {
+                "id": "普久川",
+                "name": " Okinawa 普久川",
+                "position": {
+                    "cartographicDegrees": [128.280198, 26.742871, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/普久川.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 298,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },

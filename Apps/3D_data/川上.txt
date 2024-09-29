@@ -1,0 +1,17 @@
+            // 3D 川上
+            {
+                "id": "川上",
+                "name": " Okinawa 川上",
+                "position": {
+                    "cartographicDegrees": [128.019322, 26.615911, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/川上.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 52,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },

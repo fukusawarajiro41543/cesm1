@@ -1,0 +1,17 @@
+            // 3D 漢那ダム
+            {
+                "id": "漢那ダム",
+                "name": " Okinawa 漢那ダム",
+                "position": {
+                    "cartographicDegrees": [127.95107, 26.483699, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/漢那ダム.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 40,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },

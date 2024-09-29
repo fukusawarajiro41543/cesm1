@@ -1,0 +1,17 @@
+            // 3D 羽地ダム
+            {
+                "id": "羽地ダム",
+                "name": " Okinawa 羽地ダム",
+                "position": {
+                    "cartographicDegrees": [128.02104, 26.606, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/羽地ダム.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 51,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },

@@ -1,0 +1,17 @@
+            // 3D 新川ダム
+            {
+                "id": "新川ダム",
+                "name": " Okinawa 新川ダム",
+                "position": {
+                    "cartographicDegrees": [128.244107, 26.679839, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/新川ダム.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 156,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },

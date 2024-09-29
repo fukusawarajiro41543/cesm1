@@ -1,0 +1,17 @@
+            // 3D 安波ダム
+            {
+                "id": "安波ダム",
+                "name": " Okinawa 安波ダム",
+                "position": {
+                    "cartographicDegrees": [128.268707, 26.709547, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/安波ダム.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 305.5,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },

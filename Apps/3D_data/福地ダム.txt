@@ -1,0 +1,17 @@
+            // 3D 福地ダム
+            {
+                "id": "福地ダム",
+                "name": " Okinawa 福地ダム",
+                "position": {
+                    "cartographicDegrees": [128.175788, 26.647563, 1]    // 高度1mの位置
+                },
+                "model": {
+                    "gltf": "./3D_data/福地ダム.glb",   // 3Dモデルのパス
+                    "scale": 1,
+                    "minimumPixelSize": 100,
+                    "maximumScale": 1,
+                    "heading": 47.04,
+                    "pitch": 0,
+                    "roll": 0
+                }
+            },
