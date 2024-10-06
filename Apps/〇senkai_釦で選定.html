@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CesiumJS Multiple Points Camera Orbit</title>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.93/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.93/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <style>
+        html, body, #cesiumContainer {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .control-panel {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        button {
+            margin: 0px;
+            padding: 6px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div id="cesiumContainer"></div>
+
+    <div class="control-panel">
+        <button id="yasikideraButton">屋敷平</button>
+        <button id="yakushimaButton">屋久島</button>
+        <button id="benokiButton">辺野喜</button>
+        <button id="kunigamiButton">国頭</button>
+        <button id="fungawaButton">普久川</button>
+        <button id="ahaButton">安波</button>
+        <button id="arakawaButton">新川</button>
+        <button id="fukujiButton">福地</button>
+        <button id="yaetakeButton">八重岳</button>
+        <button id="kawakamiButton">川上</button>
+        <button id="hanejiButton">羽地</button>
+        <button id="nagoButton">名護</button>
+        <button id="kannaButton">漢那</button>
+        <button id="kadenaButton">嘉手納</button>
+        <button id="yozaButton">与座</button>
+        <button id="stopButton">Stop Orbit</button>
+    </div>
+
+    <script>
+        // Cesium Ionトークンの設定
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE'; // ここにあなたのトークンを設定
+
+        var viewer = new Cesium.Viewer('cesiumContainer');
+
+        // 駅ごとの緯度経度
+        var locations = {
+            yasikidera: Cesium.Cartesian3.fromDegrees(130.373264, 31.32192, 0.0),  //屋敷平
+            yakushima: Cesium.Cartesian3.fromDegrees(130.398924, 30.375238, 0.0),  //屋久島
+            benoki: Cesium.Cartesian3.fromDegrees(128.258556, 26.788124, 0.0),  //辺野喜
+            kunigami: Cesium.Cartesian3.fromDegrees(128.243197, 26.752149, 0.0),  //国頭
+            fungawa: Cesium.Cartesian3.fromDegrees(128.280198, 26.742871, 0.0),  //普久川
+            aha: Cesium.Cartesian3.fromDegrees(128.268707, 26.709547, 0.0),  //安波
+            arakawa: Cesium.Cartesian3.fromDegrees(128.244107, 26.679839, 0.0),  //新川
+            fukuji: Cesium.Cartesian3.fromDegrees(128.175788, 26.647563, 0.0),  //福地
+            yaetake: Cesium.Cartesian3.fromDegrees(127.927528, 26.633885, 0.0),  //八重岳
+            kawakami: Cesium.Cartesian3.fromDegrees(128.019322, 26.615911, 0.0),  //川上
+            haneji: Cesium.Cartesian3.fromDegrees(128.02104, 26.606, 0.0),  //羽地
+            nago: Cesium.Cartesian3.fromDegrees(127.998555, 26.603336, 0.0),  //名護
+            kanna: Cesium.Cartesian3.fromDegrees(127.95107, 26.483699, 0.0),  //漢那
+            kadena: Cesium.Cartesian3.fromDegrees(127.747623, 26.330779, 0.0),  //嘉手納
+            yoza: Cesium.Cartesian3.fromDegrees(127.725405, 26.123271, 0.0),  //与座
+        };
+
+        var orbitRadius = 1000.0;  // カメラが駅から離れる距離（メートル）
+        var orbitHeight = 500.0;   // カメラの高度（メートル）
+        var orbitDuration = 18;    // 1周するのにかかる時間（秒）
+        var isOrbiting = false;
+        var tickHandler;
+        var startTime;
+        var targetPoint = locations.yasikidera;  // 初期値は名古屋駅
+
+        // カメラをtargetPointに向けつつ、カメラの位置を更新する
+        function updateCameraPosition(timeElapsed) {
+            var angle = (timeElapsed / orbitDuration) * Cesium.Math.TWO_PI; // 0 ~ 360度を計算
+            var x = orbitRadius * Math.cos(angle);
+            var y = orbitRadius * Math.sin(angle);
+            var cameraPosition = new Cesium.Cartesian3(x, y, orbitHeight);
+
+            // カメラの位置を更新し、常にtargetPointを注視するようにする
+            viewer.camera.lookAt(targetPoint, new Cesium.Cartesian3(x, y, orbitHeight));
+        }
+
+        // 軌道開始
+        function startOrbit() {
+            if (isOrbiting) return;  // すでに開始している場合は何もしない
+            isOrbiting = true;
+            startTime = viewer.clock.currentTime;
+
+            tickHandler = viewer.clock.onTick.addEventListener(function () {
+                var currentTime = viewer.clock.currentTime;
+                var elapsedSeconds = Cesium.JulianDate.secondsDifference(currentTime, startTime);
+
+                // 経過時間に基づいてカメラを更新
+                updateCameraPosition(elapsedSeconds);
+            });
+        }
+
+        // Stopボタンのイベント
+        document.getElementById('stopButton').addEventListener('click', function () {
+            if (isOrbiting) {
+                viewer.clock.onTick.removeEventListener(tickHandler);
+                isOrbiting = false;
+            }
+        });
+
+        // 屋敷平ボタン
+        document.getElementById('yasikideraButton').addEventListener('click', function () {
+            targetPoint = locations.yasikidera;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(130.373264, 31.32192, orbitHeight + 2000.0),
+                duration: 3.0,
+                complete: function () {
+                    startOrbit();
+                }
+            });
+        });
+
+        // 屋久島ボタン
+        document.getElementById('yakushimaButton').addEventListener('click', function () {
+            targetPoint = locations.yakushima;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(130.398924, 30.375238, orbitHeight + 2000.0),
+                duration: 3.0,
+                complete: function () {
+                    startOrbit();
+                }
+            });
+        });
+
+        // 辺野喜ボタン
+        document.getElementById('benokiButton').addEventListener('click', function () {
+            targetPoint = locations.benoki;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(128.258556, 26.788124, orbitHeight + 2000.0),
+                duration: 3.0,
+                complete: function () {
+                    startOrbit();
+                }
+            });
+        });
+
+        // 国頭ボタン
+        document.getElementById('kunigamiButton').addEventListener('click', function () {
+            targetPoint = locations.kunigami;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(128.243197, 26.752149, orbitHeight + 2000.0),
+                duration: 3.0,
+                complete: function () {
+                    startOrbit();
+                }
+            });
+        });
+
+        // 普久川ボタン
+        document.getElementById('fungawaButton').addEventListener('click', function () {
+            targetPoint = locations.fungawa;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(128.280198, 26.742871, orbitHeight + 2000.0),
+                duration: 3.0,
+                complete: function () {
+                    startOrbit();
+                }
+            });
+        });
+
+        // 安波ボタン
+        document.getElementById('ahaButton').addEventListener('click', function () {
+            targetPoint = locations.aha;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(128.268707, 26.709547, orbitHeight + 2000.0),
+                duration: 3.0,
+                complete: function () {
+                    startOrbit();
+                }
+            });
+        });
+
+        // 新川ボタン
+        document.getElementById('arakawaButton').addEventListener('click', function () {
+            targetPoint = locations.arakawa;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(128.244107, 26.679839, orbitHeight + 2000.0),
+                duration: 3.0,
+                complete: function () {
+                    startOrbit();
+                }
+            });
+        });
+
+        // 福地ボタン
+        document.getElementById('fukujiButton').addEventListener('click', function () {
+            targetPoint = locations.fukuji;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(128.175788, 26.647563, orbitHeight + 2000.0),
+                duration: 3.0,
+                complete: function () {
+                    startOrbit();
+                }
+            });
+        });
+
+        // 八重岳ボタン
+        document.getElementById('yaetakeButton').addEventListener('click', function () {
+            targetPoint = locations.yaetake;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(127.927528, 26.633885, orbitHeight + 2000.0),
+                duration: 3.0,
+                complete: function () {
+                    startOrbit();
+                }
+            });
+        });
+
+        // 川上ボタン
+        document.getElementById('kawakamiButton').addEventListener('click', function () {
+            targetPoint = locations.kawakami;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(128.019322, 26.615911, orbitHeight + 2000.0),
+                duration: 3.0,
+                complete: function () {
+                    startOrbit();
+                }
+            });
+        });
+
+        // 羽地ボタン
+        document.getElementById('hanejiButton').addEventListener('click', function () {
+            targetPoint = locations.haneji;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(128.02104, 26.606, orbitHeight + 2000.0),
+                duration: 3.0,
+                complete: function () {
+                    startOrbit();
+                }
+            });
+        });
+
+        // 名護ボタン
+        document.getElementById('nagoButton').addEventListener('click', function () {
+            targetPoint = locations.nago;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(127.998555, 26.603336, orbitHeight + 2000.0),
+                duration: 3.0,
+                complete: function () {
+                    startOrbit();
+                }
+            });
+        });
+
+        // 漢那ボタン
+        document.getElementById('kannaButton').addEventListener('click', function () {
+            targetPoint = locations.kanna;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(127.95107, 26.483699, orbitHeight + 2000.0),
+                duration: 3.0,
+                complete: function () {
+                    startOrbit();
+                }
+            });
+        });
+
+        // 嘉手納ボタン
+        document.getElementById('kadenaButton').addEventListener('click', function () {
+            targetPoint = locations.kadena;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(127.747623, 26.330779, orbitHeight + 2000.0),
+                duration: 3.0,
+                complete: function () {
+                    startOrbit();
+                }
+            });
+        });
+
+        // 与座ボタン
+        document.getElementById('yozaButton').addEventListener('click', function () {
+            targetPoint = locations.yoza;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(127.725405, 26.123271, orbitHeight + 2000.0),
+                duration: 3.0,
+                complete: function () {
+                    startOrbit();
+                }
+            });
+        });
+
+        //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/〇senkai_釦で選定.html
+    </script>
+</body>
+</html>
+
