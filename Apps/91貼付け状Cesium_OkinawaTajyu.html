@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沖縄・鹿児島地域ツアー - Cesium.js</title>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.95/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.95/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <style>
+        #cesiumContainer { width: 100%; height: 100%; position: absolute; top: 0; left: 0; margin: 0; padding: 0; }
+        #controls { position: absolute; top: 10px; left: 10px; z-index: 1; }
+        button { margin: 5px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <div id="cesiumContainer"></div>
+    <div id="controls">
+        <button id="startTour">Tour</button>
+        <button id="stopTour">Stop</button>
+    </div>
+
+    <script>
+        // Cesium Ionトークンの設定
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE'; // ここにあなたのトークンを設定
+
+        const viewer = new Cesium.Viewer('cesiumContainer', {
+            terrainProvider: Cesium.createWorldTerrain()
+        });
+
+        // 地形の上にエンティティを表示するための設定
+        viewer.scene.globe.depthTestAgainstTerrain = false;
+
+        // 外部のCZMLファイルを読み込む
+        Cesium.CzmlDataSource.load('combined_output.czml')
+          .then(function(dataSource) {
+            viewer.dataSources.add(dataSource);
+            // ポイントとラインを地形の上に表示
+            dataSource.entities.values.forEach(function(entity) {
+                if (entity.point) {
+                    entity.point.heightReference = Cesium.HeightReference.RELATIVE_TO_GROUND;
+                }
+                if (entity.polyline) {
+                    entity.polyline.clampToGround = true;
+                    entity.polyline.classificationType = Cesium.ClassificationType.BOTH;
+                }
+            });
+          })
+          .catch(function(error) {
+            console.error('CZMLの読み込みに失敗しました:', error);
+          });
+
+        // 同じフォルダ内のCZMLファイルをロード
+        var czmlDataSource1 = new Cesium.CzmlDataSource();
+        czmlDataSource1.load('output.czml').then(function(dataSource) {
+            viewer.dataSources.add(dataSource);
+            // ポイントとラインを地形の上に表示
+            dataSource.entities.values.forEach(function(entity) {
+                if (entity.point) {
+                    entity.point.heightReference = Cesium.HeightReference.RELATIVE_TO_GROUND;
+                }
+                if (entity.polyline) {
+                    entity.polyline.clampToGround = true;
+                    entity.polyline.classificationType = Cesium.ClassificationType.BOTH;
+                }
+            });
+            viewer.zoomTo(dataSource);
+        });
+
+        // 同じフォルダ内のCZMLファイルをロード
+        var czmlDataSource2 = new Cesium.CzmlDataSource();
+        czmlDataSource2.load('combined_3dmodel_output.czml').then(function(dataSource) {
+            viewer.dataSources.add(dataSource);
+            // 3Dモデルを地形の上に表示
+            dataSource.entities.values.forEach(function(entity) {
+                if (entity.model) {
+                    entity.model.heightReference = Cesium.HeightReference.RELATIVE_TO_GROUND;
+                }
+            });
+            viewer.zoomTo(dataSource);
+        });
+
+        const cities = [
+            [127.690833, 26.227738, "那覇"],
+            [130.373264, 31.32192, "屋敷平"],
+            [130.398924, 30.375238, "屋久島"],
+            [128.258556, 26.788124, "辺野喜"],
+            [128.243197, 26.752149, "国頭"],
+            [128.280198, 26.742871, "普久川"],
+            [128.268707, 26.709547, "安波"],
+            [128.244107, 26.679839, "新川"],
+            [128.175788, 26.647563, "福地"],
+            [127.927528, 26.633885, "八重岳"],
+            [128.019322, 26.615911, "川上"],
+            [128.02104, 26.606, "羽地"],
+            [127.998555, 26.603336, "名護"],
+            [127.95107, 26.483699, "漢那"],
+            [127.747623, 26.330779, "嘉手納"],
+            [127.725405, 26.123271, "与座"],
+            [127.690833, 26.227738, "那覇"]
+        ];
+
+        const cameraHeightAboveGround = 100;
+        const cameraDistance = 1000;
+        const circlePoints = 360;
+        const circleTime = 10; // seconds
+        const startEndHeight = 30000;
+
+        let tourActive = false;
+        let currentCityIndex = -1;
+
+        document.getElementById('startTour').onclick = function() {
+            if (!tourActive) {
+                tourActive = true;
+                currentCityIndex = -1; // Reset to start from the first city
+                startTour();
+            }
+        };
+
+        document.getElementById('stopTour').onclick = function() {
+            tourActive = false;
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(cities[cities.length - 1][0], cities[cities.length - 1][1], startEndHeight),
+                duration: 5
+            });
+        };
+
+        function startTour() {
+            currentCityIndex++;
+            if (currentCityIndex >= cities.length) {
+                stopTour();
+                return;
+            }
+
+            const [lon, lat] = cities[currentCityIndex];
+            
+            viewer.scene.globe.depthTestAgainstTerrain = true;
+            
+            const terrainProvider = viewer.terrainProvider;
+            const positions = [Cesium.Cartographic.fromDegrees(lon, lat)];
+            
+            Cesium.sampleTerrainMostDetailed(terrainProvider, positions).then(function(updatedPositions) {
+                const groundHeight = updatedPositions[0].height;
+                const cameraHeight = groundHeight + cameraHeightAboveGround;
+
+                viewer.camera.flyTo({
+                    destination: Cesium.Cartesian3.fromDegrees(lon, lat, cameraHeight),
+                    duration: 5,
+                    complete: function() {
+                        rotateCamera(lon, lat, cameraHeight);
+                    }
+                });
+            });
+        }
+
+        function rotateCamera(lon, lat, height) {
+            let step = 0;
+
+            function rotate() {
+                if (!tourActive || step >= circlePoints) {
+                    setTimeout(startTour, 1000);
+                    return;
+                }
+
+                const angle = (step / circlePoints) * 2 * Math.PI;
+                const cameraLon = lon + (cameraDistance / 111320) * Math.cos(angle) / Math.cos(lat * Math.PI / 180);
+                const cameraLat = lat + (cameraDistance / 110540) * Math.sin(angle);
+
+                const center = Cesium.Cartesian3.fromDegrees(lon, lat, height - cameraHeightAboveGround);
+                const cameraPosition = Cesium.Cartesian3.fromDegrees(cameraLon, cameraLat, height);
+
+                viewer.scene.camera.setView({
+                    destination: cameraPosition,
+                    orientation: {
+                        heading: Cesium.Math.toRadians(angle * (180 / Math.PI) + 90),
+                        pitch: Cesium.Math.toRadians(-20),
+                        roll: 0
+                    }
+                });
+
+                viewer.scene.camera.lookAt(center, new Cesium.HeadingPitchRange(
+                    Cesium.Math.toRadians(angle * (180 / Math.PI) + 90),
+                    Cesium.Math.toRadians(-20),
+                    cameraDistance
+                ));
+
+                step++;
+                setTimeout(rotate, circleTime * 1000 / circlePoints);
+            }
+
+            rotate();
+        }
+
+        viewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(cities[0][0], cities[0][1], startEndHeight),
+            duration: 0,
+            complete: function() {
+                // Initial view setup
+            }
+        });
+
+    //確認用URL:https://fukusawarajiro41543.github.io/cesm1/Apps/91貼付け状Cesium_OkinawaTajyu.html
+    </script>
+</body>
+</html>
+
+
+
