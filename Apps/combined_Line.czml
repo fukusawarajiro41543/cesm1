@@ -31,7 +31,7 @@
             "material": {
                 "solidColor": {
                     "color": {
-                        "rgba": [255,                            0,                            0,                            255]
+                        "rgba": [0,                            0,                            255,                            255]
                     }
                 }
             }
@@ -184,7 +184,7 @@
             "material": {
                 "solidColor": {
                     "color": {
-                        "rgba": [255,                            0,                            0,                            255]
+                        "rgba": [0,                            0,                            255,                            255]
                     }
                 }
             }
@@ -303,7 +303,7 @@
             "material": {
                 "solidColor": {
                     "color": {
-                        "rgba": [255,                            0,                            0,                            255]
+                        "rgba": [0,                            0,                            255,                            255]
                     }
                 }
             }
@@ -337,7 +337,7 @@
             "material": {
                 "solidColor": {
                     "color": {
-                        "rgba": [255,                            0,                            0,                            255]
+                        "rgba": [0,                            0,                            255,                            255]
                     }
                 }
             }
@@ -450,13 +450,13 @@
         "name": "漢那(金武)",
         "polyline": {
             "positions": {
-                "cartographicDegrees": [127.95107,                    26.483699,                    40,                    127.9338888888889,                    26.46783333333333,                    19.8]
+                "cartographicDegrees": [127.9510719,                    26.4836765,                    50.3,                    127.9338888888889,                    26.46783333333333,                    19.8]
             },
             "width": 2,
             "material": {
                 "solidColor": {
                     "color": {
-                        "rgba": [255,                            0,                            0,                            255]
+                        "rgba": [0,                            0,                            255,                            255]
                     }
                 }
             }
@@ -490,7 +490,7 @@
             "material": {
                 "solidColor": {
                     "color": {
-                        "rgba": [255,                            0,                            0,                            255]
+                        "rgba": [0,                            0,                            255,                            255]
                     }
                 }
             }
@@ -524,7 +524,7 @@
             "material": {
                 "solidColor": {
                     "color": {
-                        "rgba": [255,                            0,                            0,                            255]
+                        "rgba": [0,                            0,                            255,                            255]
                     }
                 }
             }
@@ -609,7 +609,7 @@
             "material": {
                 "solidColor": {
                     "color": {
-                        "rgba": [255,                            0,                            0,                            255]
+                        "rgba": [0,                            0,                            255,                            255]
                     }
                 }
             }
@@ -677,7 +677,7 @@
             "material": {
                 "solidColor": {
                     "color": {
-                        "rgba": [255,                            0,                            0,                            255]
+                        "rgba": [0,                            0,                            255,                            255]
                     }
                 }
             }
