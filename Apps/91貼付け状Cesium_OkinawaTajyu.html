@@ -68,7 +68,7 @@
 
         // 同じフォルダ内のCZMLファイルをロード
         var czmlDataSource2 = new Cesium.CzmlDataSource();
-        czmlDataSource2.load('combined_3dmodel_output.czml').then(function(dataSource) {
+        czmlDataSource2.load('combined_3dmodel.czml').then(function(dataSource) {
             viewer.dataSources.add(dataSource);
             // 3Dモデルを地形の上に表示
             dataSource.entities.values.forEach(function(entity) {
